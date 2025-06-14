@@ -19,10 +19,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true }
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "padding-line-between-statements/padding-line-between-statements": [
         "error",
         { blankLine: "always", prev: "*", next: "return" }
