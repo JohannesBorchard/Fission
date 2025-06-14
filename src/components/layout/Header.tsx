@@ -9,8 +9,9 @@ import {
   navigationMenuTriggerStyle
 } from "../ui/NavigationMenu"
 
+import { Description as DialogDescription } from "@radix-ui/react-dialog"
 import { ModeToggle } from "../ui/ModeToggle"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
 
 export default function Header() {
   return (
@@ -21,9 +22,9 @@ export default function Header() {
 
       <div className="flex gap-3">
         <ModeToggle />
-        <Link to="/login">
-          <Button variant="secondary">Login</Button>
-        </Link>
+        <Button asChild variant="secondary">
+          <Link to="/login">Login</Link>
+        </Button>
 
         {/* Mobile-Burger */}
         <div className="md:hidden">
@@ -98,19 +99,27 @@ function MobileNavSheet() {
         <SheetTitle className="text-primary/80 absolute top-2.5 left-5">Pages</SheetTitle>
       </SheetHeader>
 
+      <DialogDescription className="sr-only" id="mobile-menu-desc">
+        Hauptnavigation für mobile Geräte mit Links zu Features, Pricing, Blog und Documentation.
+      </DialogDescription>
+
       <div className="mt-10 w-full flex-1">
         <NavigationMenu className="max-w-none">
           <NavigationMenuList className="flex flex-col space-y-2">
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to="/">Home</Link>
-              </NavigationMenuLink>
+              <SheetClose asChild>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link to="/">Home</Link>
+                </NavigationMenuLink>
+              </SheetClose>
             </NavigationMenuItem>
             {["Features", "Pricing", "Blog", "Documentation"].map((label) => (
               <NavigationMenuItem key={label}>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                  <Link to={`/${label.toLowerCase()}`}>{label}</Link>
-                </NavigationMenuLink>
+                <SheetClose asChild>
+                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <Link to={`/${label.toLowerCase()}`}>{label}</Link>
+                  </NavigationMenuLink>
+                </SheetClose>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -120,9 +129,13 @@ function MobileNavSheet() {
       {/* Login inside sheet */}
       <div className="flex flex-col gap-4">
         <ModeToggle className="w-full" />
-        <Button variant="secondary" className="w-full">
-          Login
-        </Button>
+        <SheetClose asChild>
+          <Link to="/login">
+            <Button variant="secondary" className="w-full">
+              Login
+            </Button>
+          </Link>
+        </SheetClose>
       </div>
     </SheetContent>
   )
