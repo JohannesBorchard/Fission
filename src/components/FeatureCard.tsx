@@ -10,7 +10,7 @@ interface FeatureCardProps {
 
 export function FeatureCard({ Icon, title, description }: FeatureCardProps) {
   return (
-    <Card className="group transition-shadow hover:shadow-lg">
+    <Card className="group h-full transition-shadow hover:shadow-lg">
       <CardHeader className="flex flex-col items-start space-y-2">
         <Icon className="text-primary h-8 w-8 transition-transform group-hover:scale-110" />
         <CardTitle className="mb-1 text-lg leading-tight font-semibold">{title}</CardTitle>

@@ -24,11 +24,11 @@ function HeroSection() {
         Follow along on Twitter
       </Button>
       <H1>An example app built using Next.js 13 server components.</H1>
-      <P>
-        I'm building a web app with Next.js 13 and open sourcing everything. {"\n"}
-        Follow along as we figure this out together.
+      <P className="">
+        I'm building a web app with Next.js 13 and open sourcing everything. Follow along as we
+        figure this out together.
       </P>
-      <div className="flex">
+      <div className="flex gap-3">
         <Button size="lg">Get Started</Button>
         <Button size="lg" variant="outline">
           GitHub
@@ -82,10 +82,10 @@ function FeaturesSection() {
     <Section className="my-20 space-y-8">
       <H1>Features</H1>
       <P>
-        This project is an experiment to see how a modern app, with features like auth, {"\n"}
+        This project is an experiment to see how a modern app, with features like auth,
         subscriptions, API routes, and static pages would work in Next.js 13 app dir.
       </P>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         {features.map((f) => (
           <FeatureCard key={f.title} Icon={f.Icon} title={f.title} description={f.description} />
         ))}
@@ -103,8 +103,7 @@ function LicenseSection() {
     <Section className="my-20">
       <H1>Proudly Open Source</H1>
       <P>
-        Taxonomy is open source and powered by open source software. {"\n"}
-        The code is available on
+        Taxonomy is open source and powered by open source software. The code is available on{" "}
         <A href="https://www.github.com" target="_blank">
           GitHub
         </A>
