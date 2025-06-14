@@ -1,9 +1,9 @@
-import { FeatureCard } from "@/components/FeatureCard"
+import { FeatureCard } from "@/components/common/FeatureCard"
+import { A } from "@/components/common/typography/A"
+import { H1 } from "@/components/common/typography/H1"
+import { P } from "@/components/common/typography/P"
 import Section from "@/components/layout/Section"
-import { A } from "@/components/typography/A"
-import { H1 } from "@/components/typography/H1"
-import { P } from "@/components/typography/P"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import { Atom, Box, CircleAlert, Database, DollarSign, Shield, type LucideIcon } from "lucide-react"
 
 export default function IndexPage() {

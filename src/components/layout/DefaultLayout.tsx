@@ -1,5 +1,5 @@
 import { Outlet } from "react-router"
-import { ThemeProvider } from "../ThemeProvider"
+import { ThemeProvider } from "../ui/ThemeProvider"
 import Footer from "./Footer"
 import Header from "./Header"
 

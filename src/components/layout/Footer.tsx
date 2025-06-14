@@ -1,5 +1,5 @@
 import { Command } from "lucide-react"
-import { ModeToggle } from "../ModeToggle"
+import { ModeToggle } from "../ui/ModeToggle"
 
 export default function Footer() {
   return (

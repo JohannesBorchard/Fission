@@ -1,15 +1,15 @@
 import { Command } from "lucide-react"
 import { Link } from "react-router"
-import { Button } from "../ui/button"
+import { Button } from "../ui/Button"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle
-} from "../ui/navigation-menu"
+} from "../ui/NavigationMenu"
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
 
 export default function Header() {
   return (
