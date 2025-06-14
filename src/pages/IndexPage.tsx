@@ -20,25 +20,25 @@ export default function IndexPage() {
 function HeroSection() {
   return (
     <Section className="mt-10 mb-20 flex flex-col items-center space-y-8">
-      <Link to="twitter" className="mb-0">
-        <Button variant="secondary" className="mb-3 rounded-full">
-          Follow along on Twitter
-        </Button>
-      </Link>
+      <Button asChild variant="secondary" className="mb-3 rounded-full">
+        <Link to="twitter">Follow along on Twitter</Link>
+      </Button>
       <H1>An example app built using React 19 and shadcn.</H1>
       <P className="">
         The main goal is learning modern software architecture best practices. A focus lies on
         minimizing cognitive load from tailwindCSS without using @apply.
       </P>
       <div className="flex gap-3">
-        <A href="/#feature-section" target="_self">
-          <Button size="lg">Get Started</Button>
-        </A>
-        <A href="https://github.com/JohannesBorchard/fission">
-          <Button size="lg" variant="outline">
+        <Button asChild size="lg">
+          <a href="/#feature-section" target="_self">
+            Get Started
+          </a>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <a href="https://github.com/JohannesBorchard/fission" target="_blank">
             GitHub
-          </Button>
-        </A>
+          </a>
+        </Button>
       </div>
     </Section>
   )
