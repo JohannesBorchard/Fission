@@ -15,9 +15,12 @@ export default function MainNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className="text-primary inline-flex flex-row items-center px-3 text-2xl">
+            <NavigationMenuLink
+              asChild
+              className="text-primary inline-flex flex-row items-center px-3 text-2xl"
+            >
               <Link to="/">
-                <Command className="text-primary size-6" />
+                <Command className="text-primary/90 size-6" />
                 <span className="pb-1.5 pl-2 font-semibold">Taxonomy</span>
               </Link>
             </NavigationMenuLink>

@@ -1,40 +1,10 @@
 import { FeatureCard } from "@/components/FeatureCard"
+import Section from "@/components/layout/Section"
 import { A } from "@/components/typography/A"
 import { H1 } from "@/components/typography/H1"
 import { P } from "@/components/typography/P"
 import { Button } from "@/components/ui/button"
 import { Atom, Box, CircleAlert, Database, DollarSign, Shield } from "lucide-react"
-
-export default function IndexPage() {
-  return (
-    <>
-      <HeroSection />
-      <FeaturesSection />
-      <LicenseSection />
-    </>
-  )
-}
-
-function HeroSection() {
-  return (
-    <section className="container mx-auto flex flex-col items-center gap-3 px-5 py-10">
-      <Button variant="secondary" className="rounded-full">
-        Follow along on Twitter
-      </Button>
-      <H1>An example app built using Next.js 13 server components.</H1>
-      <P>
-        I'm building a web app with Next.js 13 and open sourcing everything. <br />
-        Follow along as we figure this out together.
-      </P>
-      <div className="mt-3 flex gap-3">
-        <Button size="lg">Get Started</Button>
-        <Button size="lg" variant="outline">
-          GitHub
-        </Button>
-      </div>
-    </section>
-  )
-}
 
 const features = [
   {
@@ -69,38 +39,70 @@ const features = [
   }
 ]
 
+export default function IndexPage() {
+  return (
+    <>
+      <HeroSection />
+      <FeaturesSection />
+      <LicenseSection />
+    </>
+  )
+}
+
+function HeroSection() {
+  return (
+    /* className="container mx-auto my-20 px-5" */
+    <Section className="mt-10 mb-20 flex flex-col items-center space-y-8">
+      <Button variant="secondary" className="mb-3 rounded-full">
+        Follow along on Twitter
+      </Button>
+      <H1>An example app built using Next.js 13 server components.</H1>
+      <P>
+        I'm building a web app with Next.js 13 and open sourcing everything. {"\n"}
+        Follow along as we figure this out together.
+      </P>
+      <div className="flex">
+        <Button size="lg">Get Started</Button>
+        <Button size="lg" variant="outline">
+          GitHub
+        </Button>
+      </div>
+    </Section>
+  )
+}
+
 function FeaturesSection() {
   return (
-    <section className="container mx-auto mt-20 px-5">
+    <Section className="my-20 space-y-8">
       <H1>Features</H1>
       <P>
-        This project is an experiment to see how a modern app, with features like auth, <br />
+        This project is an experiment to see how a modern app, with features like auth, {"\n"}
         subscriptions, API routes, and static pages would work in Next.js 13 app dir.
       </P>
-      <div className="lg:grid-cols-3als mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
           <FeatureCard key={f.title} Icon={f.Icon} title={f.title} description={f.description} />
         ))}
       </div>
-      <P className="mt-5">
+      <P>
         Taxonomy also includes a blog and a full-featured documentation site built using
         Contentlayer and MDX.
       </P>
-    </section>
+    </Section>
   )
 }
 
 function LicenseSection() {
   return (
-    <section className="container mx-auto my-20 px-5">
+    <Section className="my-20">
       <H1>Proudly Open Source</H1>
       <P>
-        Taxonomy is open source and powered by open source software. <br />
-        The code is available on{" "}
+        Taxonomy is open source and powered by open source software. {"\n"}
+        The code is available on
         <A href="https://www.github.com" target="_blank">
           GitHub
         </A>
       </P>
-    </section>
+    </Section>
   )
 }
