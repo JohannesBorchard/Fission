@@ -34,7 +34,7 @@ function HeroSection() {
         <A href="/#feature-section" target="_self">
           <Button size="lg">Get Started</Button>
         </A>
-        <A href="https://github.com/JohannesBorchard">
+        <A href="https://github.com/JohannesBorchard/fission">
           <Button size="lg" variant="outline">
             GitHub
           </Button>
@@ -106,7 +106,8 @@ function LicenseSection() {
     <Section className="my-20">
       <H1>Open Source License</H1>
       <P>
-        Fission is open source and powered by open source software. The code will be available on{" "}
+        Fission is open source (GPL v3) and powered by open source software. The code will be
+        available on{" "}
         <A href="https://github.com/JohannesBorchard" target="_blank">
           GitHub
         </A>
