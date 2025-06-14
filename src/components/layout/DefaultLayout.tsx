@@ -1,13 +1,16 @@
 import { Outlet } from "react-router"
-import PageHeader from "../PageHeader"
+import MainNav from "../MainNav"
+import { ThemeProvider } from "../ThemeProvider"
 
 export default function DefaultLayout() {
   return (
-    <div className="flex min-h-screen flex-col bg-slate-100">
-      <PageHeader />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="bg-background flex min-h-screen flex-col">
+        <MainNav />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+      </div>
+    </ThemeProvider>
   )
 }
