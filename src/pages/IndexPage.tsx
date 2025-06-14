@@ -4,40 +4,7 @@ import { A } from "@/components/typography/A"
 import { H1 } from "@/components/typography/H1"
 import { P } from "@/components/typography/P"
 import { Button } from "@/components/ui/button"
-import { Atom, Box, CircleAlert, Database, DollarSign, Shield } from "lucide-react"
-
-const features = [
-  {
-    Icon: CircleAlert,
-    title: "Next.js 13",
-    description: "App dir, Routing, Layouts, Loading UI und API-Routen."
-  },
-  {
-    Icon: Atom,
-    title: "React 18",
-    description: "Server- und Client-Components, Hooks, Streaming."
-  },
-  {
-    Icon: Database,
-    title: "Database",
-    description: "ORM mit Prisma, deployed auf PlanetScale."
-  },
-  {
-    Icon: Box,
-    title: "Components",
-    description: "UI-Components mit Radix UI, gestylt via Tailwind CSS."
-  },
-  {
-    Icon: Shield,
-    title: "Authentication",
-    description: "Auth via NextAuth.js und Edge Middleware."
-  },
-  {
-    Icon: DollarSign,
-    title: "Subscriptions",
-    description: "Free & paid Subscriptions via Stripe."
-  }
-]
+import { Atom, Box, CircleAlert, Database, DollarSign, Shield, type LucideIcon } from "lucide-react"
 
 export default function IndexPage() {
   return (
@@ -70,6 +37,45 @@ function HeroSection() {
     </Section>
   )
 }
+
+interface Feature {
+  Icon: LucideIcon
+  title: string
+  description: string
+}
+
+const features: Feature[] = [
+  {
+    Icon: CircleAlert,
+    title: "Next.js 13",
+    description: "App dir, Routing, Layouts, Loading UI und API-Routen."
+  },
+  {
+    Icon: Atom,
+    title: "React 18",
+    description: "Server- und Client-Components, Hooks, Streaming."
+  },
+  {
+    Icon: Database,
+    title: "Database",
+    description: "ORM mit Prisma, deployed auf PlanetScale."
+  },
+  {
+    Icon: Box,
+    title: "Components",
+    description: "UI-Components mit Radix UI, gestylt via Tailwind CSS."
+  },
+  {
+    Icon: Shield,
+    title: "Authentication",
+    description: "Auth via NextAuth.js und Edge Middleware."
+  },
+  {
+    Icon: DollarSign,
+    title: "Subscriptions",
+    description: "Free & paid Subscriptions via Stripe."
+  }
+]
 
 function FeaturesSection() {
   return (
