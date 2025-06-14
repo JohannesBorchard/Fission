@@ -1,4 +1,4 @@
-import { Command } from "lucide-react"
+import { Zap } from "lucide-react"
 import { Link } from "react-router"
 import { Button } from "../ui/Button"
 import {
@@ -39,8 +39,8 @@ function Logo() {
       to="/"
       className="text-primary/90 hover:text-accent-foreground focus-visible:ring-ring/50 bg-background hover:bg-accent mr-5 inline-flex items-center rounded-md px-2 text-2xl transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
     >
-      <Command className="size-6" />
-      <span className="mb-1.5 ml-2 font-semibold">Taxonomy</span>
+      <Zap className="mb-0.5 size-6" />
+      <span className="mb-1.5 ml-2 font-semibold">Fission</span>
     </Link>
   )
 }
