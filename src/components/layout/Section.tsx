@@ -6,7 +6,7 @@ export default function Section({
   id
 }: PropsWithChildren<{ className?: string; id?: string }>) {
   return (
-    <section id={id} className={`container mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+    <section id={id} className={`container mx-auto px-5 sm:px-6 lg:px-8 ${className}`}>
       {children}
     </section>
   )

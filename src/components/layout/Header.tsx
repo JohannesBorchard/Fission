@@ -9,6 +9,7 @@ import {
   navigationMenuTriggerStyle
 } from "../ui/NavigationMenu"
 
+import { ModeToggle } from "../ui/ModeToggle"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
 
 export default function Header() {
@@ -19,10 +20,13 @@ export default function Header() {
       <DesktopNav />
 
       <div className="flex gap-3">
-        <Button variant="secondary">Login</Button>
+        <ModeToggle />
+        <Link to="/login">
+          <Button variant="secondary">Login</Button>
+        </Link>
 
         {/* Mobile-Burger */}
-        <div className="sm:hidden">
+        <div className="md:hidden">
           <Sheet>
             <MobileBurger />
             <MobileNavSheet />
@@ -47,7 +51,7 @@ function Logo() {
 
 function DesktopNav() {
   return (
-    <nav className="hidden flex-1 justify-start sm:flex">
+    <nav className="hidden flex-1 justify-start md:flex">
       <NavigationMenu>
         <NavigationMenuList className="flex space-x-4">
           {["Features", "Pricing", "Blog", "Documentation"].map((label) => (
@@ -114,9 +118,12 @@ function MobileNavSheet() {
       </div>
 
       {/* Login inside sheet */}
-      <Button variant="secondary" className="mt-6 w-full">
-        Login
-      </Button>
+      <div className="flex flex-col gap-4">
+        <ModeToggle className="w-full" />
+        <Button variant="secondary" className="w-full">
+          Login
+        </Button>
+      </div>
     </SheetContent>
   )
 }
