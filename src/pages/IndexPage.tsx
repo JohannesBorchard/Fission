@@ -1,4 +1,5 @@
 import { FeatureCard } from "@/components/FeatureCard"
+import { A } from "@/components/typography/A"
 import { H1 } from "@/components/typography/H1"
 import { P } from "@/components/typography/P"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,7 @@ export default function IndexPage() {
     <>
       <HeroSection />
       <FeaturesSection />
+      <LicenseSection />
     </>
   )
 }
@@ -83,6 +85,21 @@ function FeaturesSection() {
       <P className="mt-5">
         Taxonomy also includes a blog and a full-featured documentation site built using
         Contentlayer and MDX.
+      </P>
+    </section>
+  )
+}
+
+function LicenseSection() {
+  return (
+    <section className="container mx-auto my-20 px-5">
+      <H1>Proudly Open Source</H1>
+      <P>
+        Taxonomy is open source and powered by open source software. <br />
+        The code is available on{" "}
+        <A href="https://www.github.com" target="_blank">
+          GitHub
+        </A>
       </P>
     </section>
   )

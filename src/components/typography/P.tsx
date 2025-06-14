@@ -5,5 +5,5 @@ export function P({
 }: PropsWithChildren<{
   className?: string
 }>) {
-  return <p className={"text-muted-foreground mt-2 text-center text-xl " + className}>{children}</p>
+  return <p className={"text-muted-foreground mt-3 text-center text-xl " + className}>{children}</p>
 }
