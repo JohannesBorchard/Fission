@@ -5,6 +5,7 @@ import { P } from "@/components/common/elements/P"
 import Section from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button"
 import { Atom, Box, Database, DollarSign, Shield, Signpost, type LucideIcon } from "lucide-react"
+import { Link } from "react-router"
 
 export default function IndexPage() {
   return (
@@ -19,19 +20,25 @@ export default function IndexPage() {
 function HeroSection() {
   return (
     <Section className="mt-10 mb-20 flex flex-col items-center space-y-8">
-      <Button variant="secondary" className="mb-3 rounded-full">
-        Follow along on Twitter
-      </Button>
+      <Link to="twitter" className="mb-0">
+        <Button variant="secondary" className="mb-3 rounded-full">
+          Follow along on Twitter
+        </Button>
+      </Link>
       <H1>An example app built using React 19 and shadcn.</H1>
       <P className="">
         The main goal is learning modern software architecture best practices. A focus lies on
         minimizing cognitive load from tailwindCSS without using @apply.
       </P>
       <div className="flex gap-3">
-        <Button size="lg">Get Started</Button>
-        <Button size="lg" variant="outline">
-          GitHub
-        </Button>
+        <A href="/#feature-section" target="_self">
+          <Button size="lg">Get Started</Button>
+        </A>
+        <A href="https://github.com/JohannesBorchard">
+          <Button size="lg" variant="outline">
+            GitHub
+          </Button>
+        </A>
       </div>
     </Section>
   )
@@ -78,7 +85,7 @@ const features: Feature[] = [
 
 function FeaturesSection() {
   return (
-    <Section className="my-20 space-y-8">
+    <Section id="feature-section" className="my-20 space-y-8">
       <H1>Features</H1>
       <P>
         This project is an experiment to see how modern and scalable web development works with an

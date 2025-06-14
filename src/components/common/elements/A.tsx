@@ -6,7 +6,7 @@ export function A({
   className = ""
 }: PropsWithChildren<{
   href: string
-  target: string
+  target?: string
   className?: string
 }>) {
   return (
