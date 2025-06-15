@@ -71,26 +71,42 @@ const menuItems: MenuItem[] = [
   }
 ]
 
-function DesktopNav() {
+function NavLinkItem({
+  url,
+  title,
+  closeSheet = false
+}: {
+  url: string
+  title: string
+  closeSheet?: boolean
+}) {
   const { pathname } = useLocation()
+  const isActive = pathname === url
 
+  const link = (
+    <NavigationMenuLink
+      asChild
+      className={cn(navigationMenuTriggerStyle(), isActive && "text-accent-foreground")}
+    >
+      <Link to={url}>{title}</Link>
+    </NavigationMenuLink>
+  )
+
+  return (
+    <NavigationMenuItem key={url}>
+      {closeSheet ? <SheetClose asChild>{link}</SheetClose> : link}
+    </NavigationMenuItem>
+  )
+}
+
+function DesktopNav() {
   return (
     <nav className="hidden flex-1 justify-start md:flex">
       <NavigationMenu>
         <NavigationMenuList className="flex space-x-4">
-          {menuItems.map((item) => {
-            const isActive = pathname === item.url
-            return (
-              <NavigationMenuItem key={item.title}>
-                <NavigationMenuLink
-                  asChild
-                  className={cn(navigationMenuTriggerStyle(), isActive && "text-accent-foreground")}
-                >
-                  <Link to={item.url}>{item.title}</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            )
-          })}
+          {menuItems.map((i) => (
+            <NavLinkItem {...i} key={i.url} />
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
     </nav>
@@ -121,10 +137,8 @@ function MobileBurger() {
 }
 
 function MobileNavSheet() {
-  const { pathname } = useLocation()
   return (
-    <SheetContent side="right" className="flex w-64 flex-col justify-start p-6">
-      {/* Mobile-NavigationMenu in Sheet */}
+    <SheetContent side="right" className="flex w-64 flex-col p-6">
       <SheetHeader className="flex items-center justify-between">
         <SheetTitle className="text-primary/80 absolute top-2.5 left-5">Pages</SheetTitle>
       </SheetHeader>
@@ -133,27 +147,12 @@ function MobileNavSheet() {
         Hauptnavigation für mobile Geräte mit Links zu Features, Pricing, Blog und Documentation.
       </DialogDescription>
 
-      <div className="mt-10 w-full flex-1">
+      <div className="mt-10 flex-1">
         <NavigationMenu className="max-w-none">
           <NavigationMenuList className="flex flex-col space-y-2">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.url
-              return (
-                <NavigationMenuItem key={item.title}>
-                  <SheetClose asChild>
-                    <NavigationMenuLink
-                      asChild
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        isActive && "text-accent-foreground"
-                      )}
-                    >
-                      <Link to={item.url}>{item.title}</Link>
-                    </NavigationMenuLink>
-                  </SheetClose>
-                </NavigationMenuItem>
-              )
-            })}
+            {menuItems.map((i) => (
+              <NavLinkItem {...i} closeSheet key={i.url} />
+            ))}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
