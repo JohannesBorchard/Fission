@@ -1,8 +1,10 @@
+import Section from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button"
 import { Bookmark, CalendarDays, Eye, MessageCircle, MoreHorizontal } from "lucide-react"
 import { Link } from "react-router"
 
 /* Placeholder Markup for Strapi Blog Features */
+
 export default function Feed() {
   const posts = [
     {
@@ -84,8 +86,8 @@ export default function Feed() {
   ]
 
   return (
-    <section className="container mx-auto mt-16 mb-20 px-5 sm:px-6 lg:px-8">
-      <h2 className="mb-16 text-center text-4xl font-bold tracking-tight sm:text-5xl">
+    <Section>
+      <h2 className="mb-10 text-center text-4xl font-bold tracking-tight sm:text-5xl">
         Community Feed
       </h2>
       <div className="mx-auto flex max-w-4xl flex-col space-y-10">
@@ -128,6 +130,6 @@ export default function Feed() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

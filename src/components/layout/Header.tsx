@@ -16,7 +16,7 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-4 sm:p-5">
+    <header className="flex items-center justify-between px-4 pt-4 sm:px-5 sm:pt-5">
       {/* Desktop-Navigation */}
       <Logo />
       <DesktopNav />

@@ -31,10 +31,10 @@ export default function IndexPage() {
 
 function HeroSection() {
   return (
-    <Section className="flex flex-col items-center space-y-8">
-      <Button asChild variant="secondary" className="mb-3 rounded-full">
+    <Section className="mt-0 flex flex-col items-center space-y-8">
+      {/* <Button asChild variant="secondary" className="mb-3 rounded-full">
         <Link to="twitter">Follow along on Twitter</Link>
-      </Button>
+      </Button> */}
       <H1>An example app built using React 19 and shadcn.</H1>
       <P className="">
         The main goal is learning modern software architecture best practices. A focus lies on

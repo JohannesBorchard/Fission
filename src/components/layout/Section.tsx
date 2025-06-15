@@ -8,7 +8,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`container mx-auto mt-10 px-5 sm:px-6 md:mt-15 lg:px-8 ${className}`}
+      className={`container mx-auto mt-15 px-5 sm:mt-20 sm:px-6 md:mt-25 lg:px-8 ${className}`}
     >
       {children}
     </section>

@@ -1,10 +1,12 @@
+import Section from "@/components/layout/Section"
 import { Check, Euro, Users } from "lucide-react"
 import { Link } from "react-router"
 
 /* Placeholder Markup for Stripe Payment Features */
+
 export default function Premium() {
   return (
-    <section id="pricing" className="container mx-auto mt-16 mb-20 px-5 sm:px-6 lg:px-8">
+    <Section id="pricing">
       <h2 className="mb-6 text-center text-4xl font-bold tracking-tight sm:text-5xl">Go Premium</h2>
       <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-lg">
         Simple pricing. No hidden fees. Cancel anytime.
@@ -68,6 +70,6 @@ export default function Premium() {
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
