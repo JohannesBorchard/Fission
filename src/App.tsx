@@ -3,6 +3,7 @@ import DefaultLayout from "./components/layout/DefaultLayout"
 import ScrollToAnchor from "./components/ScrollToAnchor"
 import IndexPage from "./pages/IndexPage"
 import NotFound from "./pages/NotFound"
+import Premium from "./pages/Premium"
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index element={<IndexPage />} />
+          <Route path="/premium" element={<Premium />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
