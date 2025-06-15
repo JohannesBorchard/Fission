@@ -12,11 +12,7 @@ export default function Footer() {
           <A href="https://github.com/JohannesBorchard" target="_blank">
             Johannes Borchard
           </A>
-          . Hosted by Vercel. Initial layout inspiration from{" "}
-          <A href="https://tx.shadcn.com/" target="_blank">
-            Taxonomy
-          </A>
-          .
+          . Hosted by Vercel.
         </span>
       </div>
       <ModeToggle />
