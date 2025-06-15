@@ -1,6 +1,7 @@
 import { FeatureCard } from "@/components/common/FeatureCard"
 import { A } from "@/components/common/elements/A"
 import { H1 } from "@/components/common/elements/H1"
+import { H2 } from "@/components/common/elements/H2"
 import { P } from "@/components/common/elements/P"
 import Section from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button"
@@ -19,7 +20,7 @@ export default function IndexPage() {
 
 function HeroSection() {
   return (
-    <Section className="mt-10 mb-20 flex flex-col items-center space-y-8">
+    <Section className="flex flex-col items-center space-y-8">
       <Button asChild variant="secondary" className="mb-3 rounded-full">
         <Link to="twitter">Follow along on Twitter</Link>
       </Button>
@@ -85,8 +86,8 @@ const features: Feature[] = [
 
 function FeaturesSection() {
   return (
-    <Section id="feature-section" className="my-20 space-y-8">
-      <H1>Features</H1>
+    <Section id="feature-section" className="space-y-8">
+      <H2>Features</H2>
       <P>
         This project is an experiment to see how modern and scalable web development works with an
         increasing set of state of the art technologies.
@@ -103,8 +104,8 @@ function FeaturesSection() {
 
 function LicenseSection() {
   return (
-    <Section className="my-20">
-      <H1>Open Source License</H1>
+    <Section>
+      <H2>Open Source License</H2>
       <P>
         Fission is open source (GPL v3) and powered by open source software. The code will be
         available on{" "}
