@@ -1,4 +1,5 @@
 import Section from "@/components/layout/Section"
+import { Badge } from "@/components/ui/Badge"
 import { Check, Euro, Users } from "lucide-react"
 import { Link } from "react-router"
 
@@ -7,6 +8,9 @@ import { Link } from "react-router"
 export default function Premium() {
   return (
     <Section id="pricing">
+      <Badge variant="outline" size="lg" className="mx-auto mb-5 block">
+        Todo
+      </Badge>
       <h2 className="mb-6 text-center text-4xl font-bold tracking-tight sm:text-5xl">Go Premium</h2>
       <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-lg">
         Simple pricing. No hidden fees. Cancel anytime.

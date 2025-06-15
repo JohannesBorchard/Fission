@@ -54,31 +54,37 @@ function Logo() {
 interface MenuItem {
   title: string
   url: string
+  done?: boolean
 }
 
 const menuItems: MenuItem[] = [
   {
     title: "Home",
-    url: "/"
+    url: "/",
+    done: true
   },
   {
     title: "Feed",
-    url: "/feed"
+    url: "/feed",
+    done: false
   },
   {
     title: "Premium",
-    url: "/premium"
+    url: "/premium",
+    done: false
   }
 ]
 
 function NavLinkItem({
   url,
   title,
-  closeSheet = false
+  closeSheet = false,
+  done = false
 }: {
   url: string
   title: string
   closeSheet?: boolean
+  done?: boolean
 }) {
   const { pathname } = useLocation()
   const isActive = pathname === url
@@ -88,7 +94,10 @@ function NavLinkItem({
       asChild
       className={cn(navigationMenuTriggerStyle(), isActive && "text-accent-foreground")}
     >
-      <Link to={url}>{title}</Link>
+      <Link to={url} className="flex flex-row">
+        {title}
+        {/* !done && <Badge variant="outline">Todo</Badge> */}
+      </Link>
     </NavigationMenuLink>
   )
 

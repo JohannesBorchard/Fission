@@ -1,4 +1,5 @@
 import Section from "@/components/layout/Section"
+import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { Bookmark, CalendarDays, Eye, MessageCircle, MoreHorizontal } from "lucide-react"
 import { Link } from "react-router"
@@ -87,6 +88,9 @@ export default function Feed() {
 
   return (
     <Section>
+      <Badge variant="outline" size="lg" className="mx-auto mb-5 block">
+        Todo
+      </Badge>
       <h2 className="mb-10 text-center text-4xl font-bold tracking-tight sm:text-5xl">
         Community Feed
       </h2>
