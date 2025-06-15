@@ -140,7 +140,7 @@ function MobileNavSheet() {
   return (
     <SheetContent side="right" className="flex w-64 flex-col p-6">
       <SheetHeader className="flex items-center justify-between">
-        <SheetTitle className="text-primary/80 absolute top-2.5 left-5">Pages</SheetTitle>
+        <SheetTitle className="text-foreground/80 absolute top-2.5 left-5">Pages</SheetTitle>
       </SheetHeader>
 
       <DialogDescription className="sr-only" id="mobile-menu-desc">
