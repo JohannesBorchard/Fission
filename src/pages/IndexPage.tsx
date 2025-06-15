@@ -42,9 +42,7 @@ function HeroSection() {
       </P>
       <div className="flex gap-3">
         <Button asChild size="lg">
-          <a href="/#feature-section" target="_self">
-            Get Started
-          </a>
+          <Link to="/registration">Get Started</Link>
         </Button>
         <Button asChild size="lg" variant="outline">
           <a href="https://github.com/JohannesBorchard/fission" target="_blank">
