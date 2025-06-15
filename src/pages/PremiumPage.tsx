@@ -5,7 +5,7 @@ import { Link } from "react-router"
 
 /* Placeholder Markup for Stripe Payment Features */
 
-export default function Premium() {
+export default function PremiumPage() {
   return (
     <Section id="pricing">
       <Badge variant="outline" size="lg" className="mx-auto mb-5 block">

@@ -6,7 +6,7 @@ import { Link } from "react-router"
 
 /* Placeholder Markup for Strapi Blog Features */
 
-export default function Feed() {
+export default function FeedPage() {
   const posts = [
     {
       id: 4,

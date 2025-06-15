@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button"
 import { ArrowLeft } from "lucide-react"
 import { Link } from "react-router"
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <Section className="my-20 flex flex-col items-center space-y-8">
       <H1>404 Page Not Found (Yet)</H1>

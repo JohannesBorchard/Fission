@@ -3,11 +3,12 @@ import { Route, Routes } from "react-router"
 import DefaultLayout from "./components/layout/DefaultLayout"
 import ScrollToAnchor from "./components/ScrollToAnchor"
 import { supabase } from "./lib/supabaseClient"
-import Auth from "./pages/Auth"
-import Feed from "./pages/Feed"
+import AuthPage from "./pages/AuthPage"
+import FeedPage from "./pages/FeedPage"
 import IndexPage from "./pages/IndexPage"
-import NotFound from "./pages/NotFound"
-import Premium from "./pages/Premium"
+import NotFoundPage from "./pages/NotFoundPage"
+import PremiumPage from "./pages/PremiumPage"
+import { RegistrationPage } from "./pages/RegistrationPage"
 
 export default function App() {
   useEffect(() => {
@@ -27,11 +28,12 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route index element={<IndexPage />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/premium" element={<Premium />} />
-          <Route path="/login" element={<Auth />} />
+          <Route path="/feed" element={<FeedPage />} />
+          <Route path="/premium" element={<PremiumPage />} />
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
