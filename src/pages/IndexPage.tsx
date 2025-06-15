@@ -5,7 +5,18 @@ import { H2 } from "@/components/common/elements/H2"
 import { P } from "@/components/common/elements/P"
 import Section from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button"
-import { Atom, Box, Database, DollarSign, Shield, Signpost, type LucideIcon } from "lucide-react"
+import {
+  Atom,
+  Box,
+  CheckCircle2,
+  DollarSign,
+  Globe,
+  MessageCircle,
+  Shield,
+  Signpost,
+  Star,
+  type LucideIcon
+} from "lucide-react"
 import { Link } from "react-router"
 
 export default function IndexPage() {
@@ -49,38 +60,63 @@ interface Feature {
   Icon: LucideIcon
   title: string
   description: string
+  done: boolean
 }
 
 const features: Feature[] = [
   {
     Icon: Atom,
-    title: "React 19",
-    description: "Client-Components, Hooks."
-  },
-  {
-    Icon: Signpost,
-    title: "React Router",
-    description: "Declarative component-based routing."
+    title: "React.ts",
+    description: "Frontend architecture, routing, and layouts.",
+    done: true
   },
   {
     Icon: Box,
-    title: "shadcn",
-    description: "UI-Components based on Radix UI and tailwindCSS."
-  },
-  {
-    Icon: Database,
-    title: "Database",
-    description: "TODO."
+    title: "shadcn/ui",
+    description: "Accessible UI components using Radix and Tailwind CSS.",
+    done: true
   },
   {
     Icon: Shield,
-    title: "Authentication",
-    description: "TODO."
+    title: "Supabase Auth",
+    description: "User registration, login, and protected routes.",
+    done: false
+  },
+  {
+    Icon: MessageCircle,
+    title: "Comments",
+    description: "User comments stored in Supabase.",
+    done: false
+  },
+  {
+    Icon: Star,
+    title: "Ratings",
+    description: "User ratings stored in Supabase.",
+    done: false
+  },
+  {
+    Icon: Signpost,
+    title: "Strapi CMS",
+    description: "Blog content via REST or GraphQL from Strapi.",
+    done: false
   },
   {
     Icon: DollarSign,
     title: "Stripe",
-    description: "TODO."
+    description: "Payments handled via custom UI and webhooks.",
+    done: false
+  },
+  {
+    Icon: Globe,
+    title: "i18n",
+    description: "Multi-language support with dynamic content switching.",
+    done: false
+  },
+  {
+    Icon: CheckCircle2,
+    title: "Unit Testing",
+    description: "Component and logic tests for long-term reliability.",
+    done: false
   }
 ]
 
@@ -92,9 +128,15 @@ function FeaturesSection() {
         This project is an experiment to see how modern and scalable web development works with an
         increasing set of state of the art technologies.
       </P>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
-          <FeatureCard key={f.title} Icon={f.Icon} title={f.title} description={f.description} />
+          <FeatureCard
+            key={f.title}
+            Icon={f.Icon}
+            title={f.title}
+            description={f.description}
+            done={f.done}
+          />
         ))}
       </div>
       <P>Other features will be included here.</P>
