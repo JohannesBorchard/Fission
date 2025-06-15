@@ -13,9 +13,7 @@ export function A({
     <a
       href={href}
       target={target}
-      className={
-        "text-primary hover:text-primary/80 font-medium underline underline-offset-4 " + className
-      }
+      className={"hover:text-primary font-medium underline underline-offset-4 " + className}
     >
       {children}
     </a>

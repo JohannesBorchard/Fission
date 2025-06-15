@@ -42,7 +42,7 @@ function Logo() {
   return (
     <Link
       to="/"
-      className="text-primary/90 hover:text-accent-foreground focus-visible:ring-ring/50 bg-background hover:bg-accent mr-5 inline-flex items-center rounded-md px-2 text-2xl transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+      className="text-primary hover:text-primary-foreground/80 focus-visible:ring-ring/50 mr-5 inline-flex items-center rounded-md px-2 text-2xl transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
     >
       <Zap className="mb-0.5 size-6" />
       <span className="mb-1.5 ml-2 font-semibold">Fission</span>

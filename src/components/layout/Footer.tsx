@@ -9,11 +9,11 @@ export default function Footer() {
         <Zap className="text-muted-foreground mb-1 inline size-6" />
         <span className="text-muted-foreground ml-2">
           Built by{" "}
-          <A href="https://github.com/JohannesBorchard" target="_blank" className="text-primary/80">
+          <A href="https://github.com/JohannesBorchard" target="_blank">
             Johannes Borchard
           </A>
           . Hosted by Vercel. Initial layout inspiration from{" "}
-          <A href="https://tx.shadcn.com/" target="_blank" className="text-primary/80">
+          <A href="https://tx.shadcn.com/" target="_blank">
             Taxonomy
           </A>
           .
