@@ -1,5 +1,5 @@
 import { Zap } from "lucide-react"
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { Button } from "../ui/Button"
 import {
   NavigationMenu,
@@ -9,6 +9,7 @@ import {
   navigationMenuTriggerStyle
 } from "../ui/NavigationMenu"
 
+import { cn } from "@/lib/utils"
 import { Description as DialogDescription } from "@radix-ui/react-dialog"
 import { ModeToggle } from "../ui/ModeToggle"
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
@@ -50,23 +51,46 @@ function Logo() {
   )
 }
 
+interface MenuItem {
+  title: string
+  url: string
+}
+
+const menuItems: MenuItem[] = [
+  {
+    title: "Home",
+    url: "/"
+  },
+  {
+    title: "Pricing",
+    url: "/pricing"
+  },
+  {
+    title: "Blog",
+    url: "/blog"
+  }
+]
+
 function DesktopNav() {
+  const { pathname } = useLocation()
+
   return (
     <nav className="hidden flex-1 justify-start md:flex">
       <NavigationMenu>
         <NavigationMenuList className="flex space-x-4">
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <a href="/#feature-section">Features</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          {["Pricing", "Blog", "Documentation"].map((label) => (
-            <NavigationMenuItem key={label}>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link to={`/${label.toLowerCase()}`}>{label}</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = pathname === item.url
+            return (
+              <NavigationMenuItem key={item.title}>
+                <NavigationMenuLink
+                  asChild
+                  className={cn(navigationMenuTriggerStyle(), isActive && "text-accent-foreground")}
+                >
+                  <Link to={item.url}>{item.title}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            )
+          })}
         </NavigationMenuList>
       </NavigationMenu>
     </nav>
@@ -97,6 +121,7 @@ function MobileBurger() {
 }
 
 function MobileNavSheet() {
+  const { pathname } = useLocation()
   return (
     <SheetContent side="right" className="flex w-64 flex-col justify-start p-6">
       {/* Mobile-NavigationMenu in Sheet */}
@@ -111,29 +136,24 @@ function MobileNavSheet() {
       <div className="mt-10 w-full flex-1">
         <NavigationMenu className="max-w-none">
           <NavigationMenuList className="flex flex-col space-y-2">
-            <NavigationMenuItem>
-              <SheetClose asChild>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                  <Link to="/">Home</Link>
-                </NavigationMenuLink>
-              </SheetClose>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <SheetClose asChild>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                  <a href="/#feature-section">Features</a>
-                </NavigationMenuLink>
-              </SheetClose>
-            </NavigationMenuItem>
-            {["Pricing", "Blog", "Documentation"].map((label) => (
-              <NavigationMenuItem key={label}>
-                <SheetClose asChild>
-                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                    <Link to={`/${label.toLowerCase()}`}>{label}</Link>
-                  </NavigationMenuLink>
-                </SheetClose>
-              </NavigationMenuItem>
-            ))}
+            {menuItems.map((item) => {
+              const isActive = pathname === item.url
+              return (
+                <NavigationMenuItem key={item.title}>
+                  <SheetClose asChild>
+                    <NavigationMenuLink
+                      asChild
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        isActive && "text-accent-foreground"
+                      )}
+                    >
+                      <Link to={item.url}>{item.title}</Link>
+                    </NavigationMenuLink>
+                  </SheetClose>
+                </NavigationMenuItem>
+              )
+            })}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
