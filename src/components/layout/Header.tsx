@@ -63,11 +63,11 @@ const menuItems: MenuItem[] = [
   },
   {
     title: "Feed",
-    url: "/pricing"
+    url: "/feed"
   },
   {
     title: "Premium",
-    url: "/blog"
+    url: "/premium"
   }
 ]
 
