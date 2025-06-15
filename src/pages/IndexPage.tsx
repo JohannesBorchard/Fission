@@ -35,7 +35,7 @@ function HeroSection() {
       {/* <Button asChild variant="secondary" className="mb-3 rounded-full">
         <Link to="twitter">Follow along on Twitter</Link>
       </Button> */}
-      <H1>An example app built using React 19 and shadcn.</H1>
+      <H1>An Example App Built Using React 19 and shadcn</H1>
       <P className="">
         The main goal is learning modern software architecture best practices. A focus lies on
         minimizing cognitive load from tailwindCSS without using @apply.
