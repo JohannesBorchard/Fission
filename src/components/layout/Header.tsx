@@ -55,7 +55,12 @@ function DesktopNav() {
     <nav className="hidden flex-1 justify-start md:flex">
       <NavigationMenu>
         <NavigationMenuList className="flex space-x-4">
-          {["Features", "Pricing", "Blog", "Documentation"].map((label) => (
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <a href="/#feature-section">Features</a>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          {["Pricing", "Blog", "Documentation"].map((label) => (
             <NavigationMenuItem key={label}>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                 <Link to={`/${label.toLowerCase()}`}>{label}</Link>
@@ -113,7 +118,14 @@ function MobileNavSheet() {
                 </NavigationMenuLink>
               </SheetClose>
             </NavigationMenuItem>
-            {["Features", "Pricing", "Blog", "Documentation"].map((label) => (
+            <NavigationMenuItem>
+              <SheetClose asChild>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <a href="/#feature-section">Features</a>
+                </NavigationMenuLink>
+              </SheetClose>
+            </NavigationMenuItem>
+            {["Pricing", "Blog", "Documentation"].map((label) => (
               <NavigationMenuItem key={label}>
                 <SheetClose asChild>
                   <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
