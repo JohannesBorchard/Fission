@@ -6,6 +6,7 @@ import { supabase } from "./lib/supabaseClient"
 import AuthPage from "./pages/AuthPage"
 import FeedPage from "./pages/FeedPage"
 import IndexPage from "./pages/IndexPage"
+import { LoginPage } from "./pages/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import PremiumPage from "./pages/PremiumPage"
 import { RegistrationPage } from "./pages/RegistrationPage"
@@ -30,7 +31,8 @@ export default function App() {
           <Route index element={<IndexPage />} />
           <Route path="/feed" element={<FeedPage />} />
           <Route path="/premium" element={<PremiumPage />} />
-          <Route path="/login" element={<AuthPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
