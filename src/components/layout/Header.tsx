@@ -78,13 +78,11 @@ const menuItems: MenuItem[] = [
 function NavLinkItem({
   url,
   title,
-  closeSheet = false,
-  done = false
+  closeSheet = false
 }: {
   url: string
   title: string
   closeSheet?: boolean
-  done?: boolean
 }) {
   const { pathname } = useLocation()
   const isActive = pathname === url
