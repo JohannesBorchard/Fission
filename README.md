@@ -22,12 +22,8 @@ This project is an experiment to see how modern and scalable web development wor
   _Blog content via REST or GraphQL from Strapi._  
   ❌ Todo
 
-- ⭐ **Ratings**  
-  _User ratings stored in Supabase._  
-  ❌ Todo
-
-- 💬 **Comments**  
-  _User comments stored in Supabase._  
+- 💬 **Comments & Ratings**  
+  _Feedback on blogposts, stored in Supabase._  
   ❌ Todo
 
 - 💰 **Stripe**  

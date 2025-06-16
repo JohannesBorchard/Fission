@@ -14,7 +14,6 @@ import {
   MessageCircle,
   Newspaper,
   Shield,
-  Star,
   type LucideIcon
 } from "lucide-react"
 import { Link } from "react-router"
@@ -86,16 +85,11 @@ const features: Feature[] = [
     description: "Blog content via REST or GraphQL from Strapi.",
     done: false
   },
-  {
-    Icon: Star,
-    title: "Ratings",
-    description: "User ratings stored in Supabase.",
-    done: false
-  },
+
   {
     Icon: MessageCircle,
-    title: "Comments",
-    description: "User comments stored in Supabase.",
+    title: "Comments & Ratings",
+    description: "Feedback on blogposts, stored in Supabase.",
     done: false
   },
   {
@@ -126,7 +120,7 @@ function FeaturesSection() {
         This project is an experiment to see how modern and scalable web development works with an
         increasing set of state of the art technologies.
       </P>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {features.map((f) => (
           <FeatureCard
             key={f.title}
