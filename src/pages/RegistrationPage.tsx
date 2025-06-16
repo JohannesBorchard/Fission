@@ -1,7 +1,7 @@
 import Section from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button"
 import { Card, CardContent } from "@/components/ui/Card"
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/Input"
 import { Label } from "@/components/ui/Label"
 import { supabase } from "@/lib/supabaseClient"
 import { Link } from "react-router"
