@@ -3,9 +3,18 @@ import { Button } from "@/components/ui/Button"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Link } from "react-router"
+import { useEffect } from "react"
+import { Link, useLocation } from "react-router"
+import { toast } from "sonner"
 
 export function LoginPage() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.state?.fromProtectedRoute) {
+      toast.warning("Please log in to continue.")
+    }
+  }, [location.state])
   return (
     <Section>
       <h2 className="mb-6 text-center text-4xl font-bold tracking-tight sm:text-5xl">Login</h2>
