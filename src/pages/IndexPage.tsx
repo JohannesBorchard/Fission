@@ -149,7 +149,7 @@ function LicenseSection() {
       <P>
         Fission is open source (GPL v3) and powered by open source software. The code will be
         available on{" "}
-        <A href="https://github.com/JohannesBorchard" target="_blank">
+        <A href="https://github.com/JohannesBorchard/fission" target="_blank">
           GitHub
         </A>
       </P>
