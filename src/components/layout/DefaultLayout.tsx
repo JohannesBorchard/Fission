@@ -1,5 +1,4 @@
 import { Outlet } from "react-router"
-import { ThemeProvider } from "../../context/ThemeProvider"
 import Footer from "./Footer"
 import Header from "./Header"
 
