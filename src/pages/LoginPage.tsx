@@ -4,20 +4,15 @@ import { Card, CardContent } from "@/components/ui/Card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabaseClient"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router"
 import { toast } from "sonner"
 
 export function LoginPage() {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const location = useLocation()
   const navigate = useNavigate()
 
   async function handleLogin(formData: FormData) {
-    setLoading(true)
-    setError(null)
-
     try {
       const email = formData.get("email")
       const password = formData.get("password")
@@ -35,10 +30,8 @@ export function LoginPage() {
     } catch (err) {
       // Supabase or validation errors
       const message = err instanceof Error ? err.message : "An unexpected error has occurred"
-      setError(message)
       toast.error(message)
     } finally {
-      setLoading(false)
     }
   }
 
