@@ -16,18 +16,18 @@ This project is an experiment to see how modern and scalable web development wor
 
 - 🛡️ **Supabase Auth**  
   _User registration, login, and protected routes._  
-  ❌ Todo
+  ✅ Done
 
-- 💬 **Comments**  
-  _User comments stored in Supabase._  
+- 📰 **Strapi CMS**  
+  _Blog content via REST or GraphQL from Strapi._  
   ❌ Todo
 
 - ⭐ **Ratings**  
   _User ratings stored in Supabase._  
   ❌ Todo
 
-- 🪧 **Strapi CMS**  
-  _Blog content via REST or GraphQL from Strapi._  
+- 💬 **Comments**  
+  _User comments stored in Supabase._  
   ❌ Todo
 
 - 💰 **Stripe**  
