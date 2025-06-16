@@ -97,10 +97,10 @@ export default function FeedPage() {
       <div className="mx-auto flex max-w-4xl flex-col space-y-10">
         <div className="mx-auto flex gap-3">
           <Button asChild size="lg" className="">
-            <Link to="/registration">Create Blog Post</Link>
+            <Link to="/dashboard/create">Create Blog Post</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link to="faq">Learn More</Link>
+            <Link to="/faq">Learn More</Link>
           </Button>
         </div>
 
