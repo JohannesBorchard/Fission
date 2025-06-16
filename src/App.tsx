@@ -12,6 +12,7 @@ import PremiumPage from "./pages/PremiumPage"
 import { RegistrationPage } from "./pages/RegistrationPage"
 import SecretPage from "./pages/SecretPage"
 import ProtectedRoute from "./routes/ProtectedRoute"
+import PublicRoute from "./routes/PublicRoute"
 import { supabase } from "./services/supabaseClient"
 
 export default function App() {
@@ -36,9 +37,14 @@ export default function App() {
               <Route index element={<IndexPage />} />
               <Route path="/feed" element={<FeedPage />} />
               <Route path="/premium" element={<PremiumPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/registration" element={<RegistrationPage />} />
 
+              {/* Public Only */}
+              <Route element={<PublicRoute />}>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/registration" element={<RegistrationPage />} />
+              </Route>
+
+              {/* Private Only */}
               <Route path="/dashboard" element={<ProtectedRoute />}>
                 <Route path="create" element={<SecretPage />} />
               </Route>

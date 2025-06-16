@@ -16,9 +16,18 @@ import {
   Shield,
   type LucideIcon
 } from "lucide-react"
-import { Link } from "react-router"
+import { useEffect } from "react"
+import { Link, useLocation } from "react-router"
+import { toast } from "sonner"
 
 export default function IndexPage() {
+  const location = useLocation()
+  useEffect(() => {
+    if (location.state?.fromPublicRoute) {
+      toast.warning("You are already logged in.")
+    }
+  }, [location.state])
+
   return (
     <>
       <HeroSection />
