@@ -31,7 +31,6 @@ export function RegistrationPage() {
       toast.success("Registration successful!", {
         description: "Please open the confirmation email to log-in."
       })
-      // TODO: Weiterleitung: navigate("/secret-page"), setUnverified(true)
     } catch (err) {
       // Supabase or validation errors
       const message = err instanceof Error ? err.message : "An unexpected error has occurred"

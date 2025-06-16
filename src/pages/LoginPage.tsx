@@ -3,12 +3,44 @@ import { Button } from "@/components/ui/Button"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useEffect } from "react"
-import { Link, useLocation } from "react-router"
+import { supabase } from "@/lib/supabaseClient"
+import { useEffect, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router"
 import { toast } from "sonner"
 
 export function LoginPage() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  async function handleLogin(formData: FormData) {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const email = formData.get("email")
+      const password = formData.get("password")
+
+      if (typeof email !== "string" || typeof password !== "string") {
+        throw new Error("Please enter valid email and password.")
+      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+
+      if (error) {
+        throw new Error(error.message)
+      }
+
+      navigate("/dashboard/create")
+    } catch (err) {
+      // Supabase or validation errors
+      const message = err instanceof Error ? err.message : "An unexpected error has occurred"
+      setError(message)
+      toast.error(message)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     if (location.state?.fromProtectedRoute) {
@@ -24,11 +56,17 @@ export function LoginPage() {
       <div className="mx-auto flex max-w-lg flex-col gap-6">
         <Card>
           <CardContent>
-            <form>
+            <form action={handleLogin}>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="your@email.com" required />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                  />
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
@@ -40,7 +78,7 @@ export function LoginPage() {
                       Forgot your password?
                     </Link>
                   </div>
-                  <Input id="password" type="password" required />
+                  <Input id="password" name="password" type="password" required />
                 </div>
                 <div className="flex flex-col gap-3">
                   <Button type="submit" className="bg-foreground text-background w-full">
