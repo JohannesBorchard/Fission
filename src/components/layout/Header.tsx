@@ -9,12 +9,20 @@ import {
   navigationMenuTriggerStyle
 } from "../ui/NavigationMenu"
 
+import { useAuth } from "@/context/AuthProvider"
+import { supabase } from "@/lib/supabaseClient"
 import { cn } from "@/lib/utils"
 import { Description as DialogDescription } from "@radix-ui/react-dialog"
+import { toast } from "sonner"
 import { ModeToggle } from "../ui/ModeToggle"
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
 
 export default function Header() {
+  const { user } = useAuth()
+  async function handleLogout() {
+    await supabase.auth.signOut()
+    toast.success("Logout successful")
+  }
   return (
     <header className="flex items-center justify-between px-4 pt-4 sm:px-5 sm:pt-5">
       {/* Desktop-Navigation */}
@@ -23,9 +31,15 @@ export default function Header() {
 
       <div className="flex gap-3">
         <ModeToggle />
-        <Button asChild variant="secondary">
-          <Link to="/login">Login</Link>
-        </Button>
+        {user ? (
+          <Button variant="ghost" onClick={handleLogout}>
+            Logout
+          </Button>
+        ) : (
+          <Button asChild variant="secondary">
+            <Link to="/login">Login</Link>
+          </Button>
+        )}
 
         {/* Mobile-Burger */}
         <div className="md:hidden">
