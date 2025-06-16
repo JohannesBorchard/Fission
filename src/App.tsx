@@ -6,7 +6,6 @@ import ScrollToAnchor from "./components/ScrollToAnchor"
 import { Toaster } from "./components/ui/Sonner"
 import { AuthProvider } from "./context/AuthProvider"
 import { supabase } from "./lib/supabaseClient"
-import AuthPage from "./pages/AuthPage"
 import FeedPage from "./pages/FeedPage"
 import IndexPage from "./pages/IndexPage"
 import { LoginPage } from "./pages/LoginPage"
@@ -37,7 +36,6 @@ export default function App() {
             <Route index element={<IndexPage />} />
             <Route path="/feed" element={<FeedPage />} />
             <Route path="/premium" element={<PremiumPage />} />
-            <Route path="/auth" element={<AuthPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
 
