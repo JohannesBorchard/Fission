@@ -147,8 +147,7 @@ function LicenseSection() {
     <Section>
       <H2>Open Source License</H2>
       <P>
-        Fission is open source (GPL v3) and powered by open source software. The code will be
-        available on{" "}
+        Fission is open source (GPL v3) and powered by FOSS. The code is available on{" "}
         <A href="https://github.com/JohannesBorchard/fission" target="_blank">
           GitHub
         </A>
