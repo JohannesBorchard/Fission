@@ -25,6 +25,9 @@ import {
 } from "../molecules/Sheet"
 
 export default function Header() {
+  const location = useLocation()
+  const isLoginPageOpen = location?.pathname === "/login"
+  console.log(location)
   const { user } = useAuth()
   async function handleLogout() {
     await supabase.auth.signOut()
@@ -38,14 +41,18 @@ export default function Header() {
 
       <div className="flex gap-3">
         <ModeToggle />
+
         {user ? (
           <Button variant="ghost" onClick={handleLogout}>
             Logout
           </Button>
         ) : (
-          <Button asChild variant="secondary">
-            <Link to="/login">Login</Link>
-          </Button>
+          // Login-Button nur anzeigen, wenn NICHT gerade /login geöffnet ist
+          !isLoginPageOpen && (
+            <Button asChild variant="secondary">
+              <Link to="/login">Login</Link>
+            </Button>
+          )
         )}
 
         {/* Mobile-Burger */}
