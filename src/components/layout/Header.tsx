@@ -9,7 +9,7 @@ import {
   navigationMenuTriggerStyle
 } from "../ui/NavigationMenu"
 
-import { useAuth } from "@/context/AuthProvider"
+import { useAuth } from "@/hooks/useAuth"
 import { supabase } from "@/lib/supabaseClient"
 import { cn } from "@/lib/utils"
 import { Description as DialogDescription } from "@radix-ui/react-dialog"

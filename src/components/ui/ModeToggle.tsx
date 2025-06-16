@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/DropdownMenu"
-import { useTheme } from "@/context/ThemeProvider"
+import { useTheme } from "@/hooks/useTheme"
 import type { PropsWithChildren } from "react"
 
 export function ModeToggle({ className }: PropsWithChildren<{ className?: string }>) {
