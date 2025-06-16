@@ -81,6 +81,12 @@ const features: Feature[] = [
     done: true
   },
   {
+    Icon: Newspaper,
+    title: "Strapi CMS",
+    description: "Blog content via REST or GraphQL from Strapi.",
+    done: false
+  },
+  {
     Icon: Star,
     title: "Ratings",
     description: "User ratings stored in Supabase.",
@@ -90,12 +96,6 @@ const features: Feature[] = [
     Icon: MessageCircle,
     title: "Comments",
     description: "User comments stored in Supabase.",
-    done: false
-  },
-  {
-    Icon: Newspaper,
-    title: "Strapi CMS",
-    description: "Blog content via REST or GraphQL from Strapi.",
     done: false
   },
   {
