@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Route, Routes } from "react-router"
 import DefaultLayout from "./components/layout/DefaultLayout"
 import ScrollToAnchor from "./components/ScrollToAnchor"
+import { Toaster } from "./components/ui/Sonner"
 import { supabase } from "./lib/supabaseClient"
 import AuthPage from "./pages/AuthPage"
 import FeedPage from "./pages/FeedPage"
@@ -25,6 +26,7 @@ export default function App() {
   }, [])
   return (
     <>
+      <Toaster />
       <ScrollToAnchor />
       <Routes>
         <Route element={<DefaultLayout />}>
