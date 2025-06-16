@@ -8,7 +8,7 @@ import { Link } from "react-router"
 import { toast } from "sonner"
 
 export function RegistrationPage() {
-  async function handleSignup(formData: FormData) {
+  async function handleRegistration(formData: FormData) {
     try {
       const email = formData.get("email")
       const password = formData.get("password")
@@ -43,7 +43,7 @@ export function RegistrationPage() {
       <div className="mx-auto flex max-w-lg flex-col gap-6">
         <Card>
           <CardContent>
-            <form action={handleSignup}>
+            <form action={handleRegistration}>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>

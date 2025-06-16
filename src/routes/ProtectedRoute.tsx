@@ -1,18 +1,15 @@
 import { useAuth } from "@/hooks/useAuth"
 import { Navigate, Outlet } from "react-router"
+import { toast } from "sonner"
 
 export default function ProtectedRoute() {
   const { user, loading } = useAuth()
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return null
+
   if (!user) {
-    return (
-      <Navigate
-        to="/login"
-        replace
-        state={{ fromProtectedRoute: true, intendedPath: location.pathname }}
-      />
-    )
+    toast.warning("Please log in to continue.", { id: "protected-guard-warning" })
+    return <Navigate to="/login" replace />
   }
 
   return <Outlet />

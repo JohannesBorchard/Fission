@@ -4,42 +4,32 @@ import { Label } from "@/components/atoms/Label"
 import Section from "@/components/layout/Section"
 import { Card, CardContent } from "@/components/molecules/Card"
 import { supabase } from "@/services/supabaseClient"
-import { useEffect } from "react"
-import { Link, useLocation, useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { toast } from "sonner"
 
 export function LoginPage() {
-  const location = useLocation()
   const navigate = useNavigate()
 
   async function handleLogin(formData: FormData) {
     try {
       const email = formData.get("email")
       const password = formData.get("password")
-
       if (typeof email !== "string" || typeof password !== "string") {
         throw new Error("Please enter valid email and password.")
       }
+
       const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) throw new Error(error.message)
 
-      if (error) {
-        throw new Error(error.message)
-      }
+      toast.success("Login successful!", { id: "login-success" })
 
-      navigate("/dashboard/create")
+      navigate("/dashboard/create", { replace: true })
     } catch (err) {
-      // Supabase or validation errors
       const message = err instanceof Error ? err.message : "An unexpected error has occurred"
       toast.error(message)
-    } finally {
     }
   }
 
-  useEffect(() => {
-    if (location.state?.fromProtectedRoute) {
-      toast.warning("Please log in to continue.")
-    }
-  }, [location.state])
   return (
     <Section>
       <h2 className="mb-6 text-center text-4xl font-bold tracking-tight sm:text-5xl">Login</h2>

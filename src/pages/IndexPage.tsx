@@ -5,6 +5,7 @@ import { H2 } from "@/components/atoms/typography/H2"
 import { P } from "@/components/atoms/typography/P"
 import Section from "@/components/layout/Section"
 import { FeatureCard } from "@/components/molecules/FeatureCard"
+import { useAuth } from "@/hooks/useAuth"
 import {
   Atom,
   Box,
@@ -16,18 +17,9 @@ import {
   Shield,
   type LucideIcon
 } from "lucide-react"
-import { useEffect } from "react"
-import { Link, useLocation } from "react-router"
-import { toast } from "sonner"
+import { Link } from "react-router"
 
 export default function IndexPage() {
-  const location = useLocation()
-  useEffect(() => {
-    if (location.state?.fromPublicRoute) {
-      toast.warning("You are already logged in.")
-    }
-  }, [location.state])
-
   return (
     <>
       <HeroSection />
@@ -38,11 +30,11 @@ export default function IndexPage() {
 }
 
 function HeroSection() {
+  const { user } = useAuth()
+  const getStartedDestination = user ? "dashboard/create" : "registration"
+
   return (
     <Section className="mt-0 flex flex-col items-center space-y-8">
-      {/* <Button asChild variant="secondary" className="mb-3 rounded-full">
-        <Link to="twitter">Follow along on Twitter</Link>
-      </Button> */}
       <H1>An Example App Built Using React 19 and shadcn</H1>
       <P className="">
         The main goal is learning modern software architecture best practices. A focus lies on
@@ -50,7 +42,7 @@ function HeroSection() {
       </P>
       <div className="flex gap-3">
         <Button asChild size="lg">
-          <Link to="/registration">Get Started</Link>
+          <Link to={getStartedDestination}>Get Started</Link>
         </Button>
         <Button asChild size="lg" variant="outline">
           <a href="https://github.com/JohannesBorchard/fission" target="_blank">
