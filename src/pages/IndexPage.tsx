@@ -78,7 +78,7 @@ const features: Feature[] = [
     Icon: Shield,
     title: "Supabase Auth",
     description: "User registration, login, and protected routes.",
-    done: false
+    done: true
   },
   {
     Icon: Star,
