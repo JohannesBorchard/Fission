@@ -35,17 +35,17 @@ export default function App() {
           <Routes>
             <Route element={<DefaultLayout />}>
               <Route index element={<IndexPage />} />
-              <Route path="/feed" element={<FeedPage />} />
-              <Route path="/premium" element={<PremiumPage />} />
+              <Route path="feed" element={<FeedPage />} />
+              <Route path="premium" element={<PremiumPage />} />
 
               {/* Public Only */}
               <Route element={<PublicRoute />}>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/registration" element={<RegistrationPage />} />
+                <Route path="login" element={<LoginPage />} />
+                <Route path="registration" element={<RegistrationPage />} />
               </Route>
 
               {/* Private Only */}
-              <Route path="/dashboard" element={<ProtectedRoute />}>
+              <Route path="dashboard" element={<ProtectedRoute />}>
                 <Route path="create" element={<SecretPage />} />
               </Route>
 
