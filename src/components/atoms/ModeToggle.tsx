@@ -1,12 +1,12 @@
 import { Moon, Sun } from "lucide-react"
 
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/atoms/Button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@/components/ui/DropdownMenu"
+} from "@/components/molecules/DropdownMenu"
 import { useTheme } from "@/hooks/useTheme"
 import type { PropsWithChildren } from "react"
 

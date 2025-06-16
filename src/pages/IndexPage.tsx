@@ -1,10 +1,10 @@
-import { FeatureCard } from "@/components/common/FeatureCard"
-import { A } from "@/components/common/elements/A"
-import { H1 } from "@/components/common/elements/H1"
-import { H2 } from "@/components/common/elements/H2"
-import { P } from "@/components/common/elements/P"
+import { Button } from "@/components/atoms/Button"
+import { A } from "@/components/atoms/typography/A"
+import { H1 } from "@/components/atoms/typography/H1"
+import { H2 } from "@/components/atoms/typography/H2"
+import { P } from "@/components/atoms/typography/P"
 import Section from "@/components/layout/Section"
-import { Button } from "@/components/ui/Button"
+import { FeatureCard } from "@/components/molecules/FeatureCard"
 import {
   Atom,
   Box,

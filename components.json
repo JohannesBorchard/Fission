@@ -12,10 +12,14 @@
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
+    "atoms": "@/components/atoms",
+    "molecules": "@/components/molecules",
+    "layouts": "@/components/layout",
+    "context": "@/context",
+    "hooks": "@/hooks",
+    "services": "@/services",
+    "utils": "@/utils",
+    "pages": "@/pages"
   },
   "iconLibrary": "lucide"
 }

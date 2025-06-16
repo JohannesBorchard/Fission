@@ -1,7 +1,7 @@
-import { H1 } from "@/components/common/elements/H1"
-import { P } from "@/components/common/elements/P"
+import { Button } from "@/components/atoms/Button"
+import { H1 } from "@/components/atoms/typography/H1"
+import { P } from "@/components/atoms/typography/P"
 import Section from "@/components/layout/Section"
-import { Button } from "@/components/ui/Button"
 import { ArrowLeft } from "lucide-react"
 import { Link } from "react-router"
 

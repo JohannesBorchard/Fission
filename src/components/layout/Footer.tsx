@@ -1,6 +1,6 @@
 import { Zap } from "lucide-react"
-import { A } from "../common/elements/A"
-import { ModeToggle } from "../ui/ModeToggle"
+import { ModeToggle } from "../atoms/ModeToggle"
+import { A } from "../atoms/typography/A"
 
 export default function Footer() {
   return (

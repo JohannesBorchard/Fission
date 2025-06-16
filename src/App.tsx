@@ -1,11 +1,9 @@
 import { useEffect } from "react"
 import { Route, Routes } from "react-router"
 import DefaultLayout from "./components/layout/DefaultLayout"
-import ProtectedRoute from "./components/ProtectedRoute"
-import { Toaster } from "./components/ui/Sonner"
+import { Toaster } from "./components/molecules/Sonner"
 import { AuthProvider } from "./context/AuthProvider"
 import { ThemeProvider } from "./context/ThemeProvider"
-import { supabase } from "./lib/supabaseClient"
 import FeedPage from "./pages/FeedPage"
 import IndexPage from "./pages/IndexPage"
 import { LoginPage } from "./pages/LoginPage"
@@ -13,6 +11,8 @@ import NotFoundPage from "./pages/NotFoundPage"
 import PremiumPage from "./pages/PremiumPage"
 import { RegistrationPage } from "./pages/RegistrationPage"
 import SecretPage from "./pages/SecretPage"
+import ProtectedRoute from "./routes/ProtectedRoute"
+import { supabase } from "./services/supabaseClient"
 
 export default function App() {
   useEffect(() => {

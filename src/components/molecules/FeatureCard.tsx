@@ -1,7 +1,7 @@
 // src/components/FeatureCard.tsx
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/molecules/Card"
 import { type LucideIcon } from "lucide-react"
-import { Badge } from "../ui/Badge"
+import { Badge } from "../atoms/Badge"
 
 interface FeatureCardProps {
   Icon: LucideIcon

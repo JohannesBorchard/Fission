@@ -1,5 +1,5 @@
+import { Badge } from "@/components/atoms/Badge"
 import Section from "@/components/layout/Section"
-import { Badge } from "@/components/ui/Badge"
 import { Check, Euro, Users } from "lucide-react"
 import { Link } from "react-router"
 

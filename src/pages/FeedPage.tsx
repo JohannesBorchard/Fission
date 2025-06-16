@@ -1,6 +1,6 @@
+import { Badge } from "@/components/atoms/Badge"
+import { Button } from "@/components/atoms/Button"
 import Section from "@/components/layout/Section"
-import { Badge } from "@/components/ui/Badge"
-import { Button } from "@/components/ui/Button"
 import { Bookmark, CalendarDays, Eye, MessageCircle, MoreHorizontal } from "lucide-react"
 import { Link } from "react-router"
 

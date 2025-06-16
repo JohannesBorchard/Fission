@@ -1,21 +1,28 @@
 import { Zap } from "lucide-react"
 import { Link, useLocation } from "react-router"
-import { Button } from "../ui/Button"
+import { Button } from "../atoms/Button"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle
-} from "../ui/NavigationMenu"
+} from "../molecules/NavigationMenu"
 
 import { useAuth } from "@/hooks/useAuth"
-import { supabase } from "@/lib/supabaseClient"
-import { cn } from "@/lib/utils"
+import { supabase } from "@/services/supabaseClient"
+import { cn } from "@/utils/utils"
 import { Description as DialogDescription } from "@radix-ui/react-dialog"
 import { toast } from "sonner"
-import { ModeToggle } from "../ui/ModeToggle"
-import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/Sheet"
+import { ModeToggle } from "../atoms/ModeToggle"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "../molecules/Sheet"
 
 export default function Header() {
   const { user } = useAuth()
