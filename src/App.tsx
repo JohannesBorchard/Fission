@@ -2,9 +2,9 @@ import { useEffect } from "react"
 import { Route, Routes } from "react-router"
 import DefaultLayout from "./components/layout/DefaultLayout"
 import ProtectedRoute from "./components/ProtectedRoute"
-import ScrollToAnchor from "./components/ScrollToAnchor"
 import { Toaster } from "./components/ui/Sonner"
 import { AuthProvider } from "./context/AuthProvider"
+import { ThemeProvider } from "./context/ThemeProvider"
 import { supabase } from "./lib/supabaseClient"
 import FeedPage from "./pages/FeedPage"
 import IndexPage from "./pages/IndexPage"
@@ -29,23 +29,24 @@ export default function App() {
   return (
     <>
       <Toaster />
-      <ScrollToAnchor />
       <AuthProvider>
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route index element={<IndexPage />} />
-            <Route path="/feed" element={<FeedPage />} />
-            <Route path="/premium" element={<PremiumPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/registration" element={<RegistrationPage />} />
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route index element={<IndexPage />} />
+              <Route path="/feed" element={<FeedPage />} />
+              <Route path="/premium" element={<PremiumPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/registration" element={<RegistrationPage />} />
 
-            <Route path="/dashboard" element={<ProtectedRoute />}>
-              <Route path="create" element={<SecretPage />} />
+              <Route path="/dashboard" element={<ProtectedRoute />}>
+                <Route path="create" element={<SecretPage />} />
+              </Route>
+
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
-
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </ThemeProvider>
       </AuthProvider>
     </>
   )
