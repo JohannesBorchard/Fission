@@ -1,7 +1,7 @@
-import { Button } from "@/components/atoms/Button"
-import { H1 } from "@/components/atoms/typography/H1"
-import { P } from "@/components/atoms/typography/P"
-import Section from "@/components/layout/Section"
+import { Button } from "@/shared/ui/Button"
+import Section from "@/shared/ui/Section"
+import { H1 } from "@/shared/ui/typography/H1"
+import { P } from "@/shared/ui/typography/P"
 import { ArrowLeft } from "lucide-react"
 import { Link } from "react-router"
 
