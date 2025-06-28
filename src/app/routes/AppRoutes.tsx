@@ -2,6 +2,7 @@ import ProtectedRoute from "@/app/routes/guards/ProtectedRoute"
 import PublicRoute from "@/app/routes/guards/PublicRoute"
 import { LoginPage } from "@/pages/auth/LoginPage"
 import { RegistrationPage } from "@/pages/auth/RegistrationPage"
+import BlogPostPage from "@/pages/blog/BlogPostPage"
 import FeedPage from "@/pages/blog/FeedPage"
 import SecretPage from "@/pages/blog/SecretPage"
 import IndexPage from "@/pages/marketing/IndexPage"
@@ -16,6 +17,7 @@ export default function AppRoutes() {
       <Route element={<DefaultLayout />}>
         <Route index element={<IndexPage />} />
         <Route path="feed" element={<FeedPage />} />
+        <Route path="feed/:slug" element={<BlogPostPage />} />
         <Route path="premium" element={<PremiumPage />} />
 
         {/* Public Only */}

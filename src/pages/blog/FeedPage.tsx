@@ -1,4 +1,5 @@
 import { strapiApi, type BlogPost } from "@/shared/api/strapiClient"
+import { formatDate } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui/Button"
 import Section from "@/shared/ui/Section"
 import { Bookmark, CalendarDays, Eye, MessageCircle, MoreHorizontal } from "lucide-react"
@@ -25,14 +26,6 @@ export default function FeedPage() {
     }
     fetchPosts()
   }, [])
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric"
-    })
-  }
 
   const getExcerpt = (content: string, maxLength: number = 120) => {
     const plainText = content.replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold markdown
@@ -92,7 +85,7 @@ export default function FeedPage() {
           posts.map((post) => (
             <div key={post.id} className="border-b pb-8 last:border-none last:pb-0">
               <div className="text-muted-foreground mb-1 text-sm font-medium">{post.author_id}</div>
-              <Link to={`/blog/${post.slug}`}>
+              <Link to={`/feed/${post.slug}`}>
                 <h3 className="text-foreground mb-2 cursor-pointer text-xl leading-tight font-semibold tracking-tight underline-offset-4 hover:underline">
                   {post.title}
                 </h3>

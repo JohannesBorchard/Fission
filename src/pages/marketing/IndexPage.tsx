@@ -84,7 +84,7 @@ const features: Feature[] = [
     Icon: Newspaper,
     title: "Strapi CMS",
     description: "Blog content via REST or GraphQL from Strapi.",
-    done: false
+    done: true
   },
 
   {
