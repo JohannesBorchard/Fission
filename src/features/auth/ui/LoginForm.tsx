@@ -1,32 +1,29 @@
-import { supabase } from "@/shared/api/supabaseClient"
 import { Button } from "@/shared/ui/Button"
 import { Card, CardContent } from "@/shared/ui/Card"
 import { Input } from "@/shared/ui/Input"
 import { Label } from "@/shared/ui/Label"
-import { Link, useNavigate } from "react-router"
+import { Link } from "react-router"
 import { toast } from "sonner"
+import { useLogin } from "../model/useLogin"
+import { loginSchema } from "../model/validation"
 
 export function LoginForm() {
-  const navigate = useNavigate()
+  const { login, loading } = useLogin()
 
   async function handleLogin(formData: FormData) {
-    try {
-      const email = formData.get("email")
-      const password = formData.get("password")
-      if (typeof email !== "string" || typeof password !== "string") {
-        throw new Error("Please enter valid email and password.")
-      }
-
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
-      if (error) throw new Error(error.message)
-
-      toast.success("Login successful!", { id: "login-success" })
-
-      navigate("/dashboard/create", { replace: true })
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "An unexpected error has occurred"
-      toast.error(message)
+    const rawData = {
+      email: formData.get("email"),
+      password: formData.get("password")
     }
+
+    const result = loginSchema.safeParse(rawData)
+    if (!result.success) {
+      const firstError = result.error.errors[0]
+      toast.error(firstError.message)
+      return
+    }
+
+    await login(result.data)
   }
 
   return (
@@ -37,7 +34,14 @@ export function LoginForm() {
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  required
+                  disabled={loading}
+                />
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
@@ -49,11 +53,15 @@ export function LoginForm() {
                     Forgot your password?
                   </Link>
                 </div>
-                <Input id="password" name="password" type="password" required />
+                <Input id="password" name="password" type="password" required disabled={loading} />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="bg-foreground text-background w-full">
-                  Login
+                <Button
+                  type="submit"
+                  className="bg-foreground text-background w-full"
+                  disabled={loading}
+                >
+                  {loading ? "Logging in..." : "Login"}
                 </Button>
               </div>
             </div>
