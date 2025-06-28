@@ -1,31 +1,39 @@
-import { supabase } from "@/shared/api/supabaseClient"
 import { Button } from "@/shared/ui/Button"
 import { Card, CardContent } from "@/shared/ui/Card"
 import { Input } from "@/shared/ui/Input"
 import { Label } from "@/shared/ui/Label"
+import { useState } from "react"
 import { Link } from "react-router"
 import { toast } from "sonner"
+import { useRegistration } from "../model/useRegistration"
+import { authSchema } from "../model/validation"
 
 export function RegistrationForm() {
+  const { register, loading } = useRegistration()
+
+  // save values in case of error
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  })
+
   async function handleRegistration(formData: FormData) {
-    try {
-      const email = formData.get("email")
-      const password = formData.get("password")
+    const rawData = {
+      email: formData.get("email"),
+      password: formData.get("password")
+    }
 
-      if (typeof email !== "string" || typeof password !== "string") {
-        throw new Error("Please enter valid email and password.")
-      }
-      const { error } = await supabase.auth.signUp({ email, password })
+    const result = authSchema.safeParse(rawData)
+    if (!result.success) {
+      const firstError = result.error.errors[0]
+      toast.error(firstError.message)
+      return
+    }
 
-      if (error) {
-        throw new Error(error.message)
-      }
-      toast.success("Registration successful!", {
-        description: "Please open the confirmation email to log-in."
-      })
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "An unexpected error has occurred"
-      toast.error(message)
+    const success = await register(result.data)
+
+    if (success) {
+      setFormData({ email: "", password: "" })
     }
   }
 
@@ -37,23 +45,38 @@ export function RegistrationForm() {
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  required
+                  disabled={loading}
+                  value={formData.email}
+                  onChange={(e) => {
+                    setFormData((prev) => ({ ...prev, email: e.target.value }))
+                  }}
+                />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="password" className="h-[20px]">
+                <Label htmlFor="password" className="h-5">
                   Password
                 </Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="Create a strong password"
+                  placeholder="Create a strong password (min. 8 characters)"
                   required
+                  disabled={loading}
+                  minLength={8}
+                  value={formData.password}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
-                  Create Free Account
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? "Creating Account..." : "Create Free Account"}
                 </Button>
               </div>
             </div>

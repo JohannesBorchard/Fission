@@ -2,13 +2,20 @@ import { Button } from "@/shared/ui/Button"
 import { Card, CardContent } from "@/shared/ui/Card"
 import { Input } from "@/shared/ui/Input"
 import { Label } from "@/shared/ui/Label"
+import { useState } from "react"
 import { Link } from "react-router"
 import { toast } from "sonner"
 import { useLogin } from "../model/useLogin"
-import { loginSchema } from "../model/validation"
+import { authSchema } from "../model/validation"
 
 export function LoginForm() {
   const { login, loading } = useLogin()
+
+  // save values in case of error
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  })
 
   async function handleLogin(formData: FormData) {
     const rawData = {
@@ -16,14 +23,18 @@ export function LoginForm() {
       password: formData.get("password")
     }
 
-    const result = loginSchema.safeParse(rawData)
+    const result = authSchema.safeParse(rawData)
     if (!result.success) {
       const firstError = result.error.errors[0]
       toast.error(firstError.message)
       return
     }
 
-    await login(result.data)
+    const success = await login(result.data)
+
+    if (success) {
+      setFormData({ email: "", password: "" })
+    }
   }
 
   return (
@@ -41,6 +52,8 @@ export function LoginForm() {
                   placeholder="your@email.com"
                   required
                   disabled={loading}
+                  value={formData.email}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                 />
               </div>
               <div className="grid gap-3">
@@ -53,7 +66,16 @@ export function LoginForm() {
                     Forgot your password?
                   </Link>
                 </div>
-                <Input id="password" name="password" type="password" required disabled={loading} />
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  disabled={loading}
+                  minLength={8}
+                  value={formData.password}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
+                />
               </div>
               <div className="flex flex-col gap-3">
                 <Button
