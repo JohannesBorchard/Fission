@@ -30,7 +30,7 @@ export interface StrapiResponse<T> {
 
 export const strapiApi = {
   async getBlogPosts(): Promise<BlogPost[]> {
-    const response = await fetch(`${STRAPI_URL}/api/blog-posts`)
+    const response = await fetch(`${STRAPI_URL}/api/blog-posts?sort=createdAt:desc`)
     if (!response.ok) throw new Error("Failed to fetch posts")
     const data: StrapiResponse<BlogPost[]> = await response.json()
     return data.data
