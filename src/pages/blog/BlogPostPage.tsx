@@ -69,8 +69,8 @@ export default function BlogPostPage() {
   if (post) {
     return (
       <Section>
+        <P>{post.author_name}</P>
         <H1>{post.title}</H1>
-        <P>{post.author_id}</P>
         <P>{formatDate(post.createdAt)}</P>
         <P>{post.excerpt}</P>
         <ReactMarkdown components={components}>{post.content}</ReactMarkdown>

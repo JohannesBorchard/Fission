@@ -9,6 +9,8 @@ export interface BlogPost {
   excerpt?: string
   published: boolean
   author_id: string
+  author_name: string
+  featured_image_url: string
   createdAt: string
   updatedAt: string
   publishedAt: string
