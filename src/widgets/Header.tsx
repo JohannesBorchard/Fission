@@ -14,7 +14,7 @@ import { useAuth } from "@/shared/lib/useAuth"
 import { cn } from "@/shared/lib/utils"
 import { Description as DialogDescription } from "@radix-ui/react-dialog"
 import { toast } from "sonner"
-import { ModeToggle } from "../features/theme-toggle/ui/ModeToggle"
+import { ModeToggle } from "../shared/ui/ModeToggle"
 import {
   Sheet,
   SheetClose,

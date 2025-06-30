@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/features/theme-toggle/ui/ModeToggle"
+import { ModeToggle } from "@/shared/ui/ModeToggle"
 import { A } from "@/shared/ui/typography/A"
 import { Zap } from "lucide-react"
 

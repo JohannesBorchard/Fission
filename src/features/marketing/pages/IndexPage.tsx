@@ -1,4 +1,4 @@
-import { FeatureCard } from "@/pages/marketing/ui/FeatureCard"
+import { FeatureCard } from "@/features/marketing/ui/FeatureCard"
 import { useAuth } from "@/shared/lib/useAuth"
 import { Button } from "@/shared/ui/Button"
 import Section from "@/shared/ui/Section"
