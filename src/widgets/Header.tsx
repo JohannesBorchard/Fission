@@ -27,7 +27,6 @@ import {
 export default function Header() {
   const location = useLocation()
   const isLoginPageOpen = location?.pathname === "/login"
-  console.log(location)
   const { user } = useAuth()
   async function handleLogout() {
     await supabase.auth.signOut()
