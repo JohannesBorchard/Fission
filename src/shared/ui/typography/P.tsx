@@ -10,10 +10,10 @@ export function P({ children, article, className = "", ...props }: PropsWithChil
   return (
     <p
       className={clsx(
-        "text-base whitespace-pre-line",
+        "whitespace-pre-line",
         article
-          ? ["text-foreground mb-3 max-w-none text-left"]
-          : ["text-muted-foreground mx-auto max-w-[700px] text-center"],
+          ? ["text-foreground mb-5 max-w-prose text-left font-serif text-xl leading-[1.7]"]
+          : ["text-muted-foreground mx-auto max-w-[700px] text-center text-base"],
         className
       )}
       {...props}

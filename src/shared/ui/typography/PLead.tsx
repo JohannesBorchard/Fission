@@ -15,8 +15,8 @@ export function PLead({
   return (
     <p
       className={clsx(
-        "text-muted-foreground text-xl",
-        article ? ["max-w-none text-left"] : ["mx-auto max-w-[700px] text-center"],
+        "text-muted-foreground text-xl leading-relaxed font-normal",
+        article ? ["mb-6 max-w-prose text-left"] : ["mx-auto mb-5 max-w-[700px] text-center"],
         className
       )}
       {...props}

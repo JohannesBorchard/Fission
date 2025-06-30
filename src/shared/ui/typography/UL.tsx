@@ -10,10 +10,10 @@ export function UL({ children, article, className = "", ...props }: PropsWithChi
   return (
     <ul
       className={clsx(
-        "my-6 list-disc text-base [&>li]:mt-2",
+        "my-6 list-disc [&>li]:mt-2",
         article
-          ? ["text-foreground ml-4 max-w-none"]
-          : ["text-muted-foreground mx-auto ml-6 max-w-[700px]"],
+          ? ["text-foreground ml-4 max-w-none font-serif text-xl"]
+          : ["text-muted-foreground mx-auto ml-6 max-w-[700px] text-base"],
         className
       )}
       {...props}
