@@ -1,5 +1,6 @@
 import { useBlogPost } from "@/features/blog/model/useBlogPost"
 import { formatDate } from "@/shared/lib/utils"
+import { ArticleContent } from "@/shared/ui/ArticleContent"
 import { Button } from "@/shared/ui/Button"
 import Section from "@/shared/ui/Section"
 import { H1 } from "@/shared/ui/typography/H1"
@@ -16,7 +17,9 @@ export default function BlogPostPage() {
   if (loading) {
     return (
       <Section className="max-w-3xl">
-        <ArticleDetailSkeleton />
+        <ArticleContent>
+          <ArticleDetailSkeleton />
+        </ArticleContent>
       </Section>
     )
   }
@@ -39,18 +42,20 @@ export default function BlogPostPage() {
   if (post) {
     return (
       <Section className="max-w-3xl">
-        <H1 article>{post.title}</H1>
-        <PLead article className="mt-2">
-          {post.excerpt}
-        </PLead>
-        <div className="text-muted-foreground mt-4 flex max-w-none gap-1 text-left text-base">
-          <p>{post.author_name}</p>
-          <Dot className="text-muted-foreground/30" />
-          <p>{formatDate(post.createdAt, "long")}</p>
-        </div>
-        <div className="mt-6">
-          <ReactMarkdown components={mdComponents}>{post.content}</ReactMarkdown>
-        </div>
+        <ArticleContent>
+          <H1 article>{post.title}</H1>
+          <PLead article className="mt-2">
+            {post.excerpt}
+          </PLead>
+          <div className="text-muted-foreground mt-4 flex max-w-prose flex-wrap gap-1 text-left text-base">
+            <p>{post.author_name}</p>
+            <Dot className="text-muted-foreground/30" />
+            <p>{formatDate(post.createdAt, "long")}</p>
+          </div>
+          <div className="mt-6">
+            <ReactMarkdown components={mdComponents}>{post.content}</ReactMarkdown>
+          </div>
+        </ArticleContent>
       </Section>
     )
   }
@@ -58,23 +63,23 @@ export default function BlogPostPage() {
 
 function ArticleDetailSkeleton() {
   return (
-    <div className="animate-pulse">
+    <div className="max-w-2xl animate-pulse">
       {/* H1 (2 Zeilen) */}
-      <div className="mb-3 space-y-2">
-        <div className="bg-foreground/5 h-8 w-5/6 rounded" />
-        <div className="bg-foreground/5 h-8 w-2/3 rounded" />
+      <div className="mb-8 space-y-4">
+        <div className="bg-foreground/5 h-11 w-5/6 rounded" />
+        <div className="bg-foreground/5 h-11 w-3/4 rounded" />
       </div>
 
       {/* Lead (2 Zeilen) */}
-      <div className="mt-2 mb-6 space-y-2">
+      <div className="mt-6 mb-6 space-y-2">
         <div className="bg-foreground/5 h-5 w-full rounded" />
         <div className="bg-foreground/5 h-5 w-5/6 rounded" />
       </div>
 
       {/* Meta (Author + Date) */}
-      <div className="text-muted-foreground mt-4 flex gap-3 text-base">
-        <div className="bg-foreground/5 h-4 w-20 rounded" />
-        <div className="bg-foreground/5 h-4 w-20 rounded" />
+      <div className="text-muted-foreground mt-4 flex gap-4 text-base">
+        <div className="bg-foreground/5 h-4 w-30 rounded" />
+        <div className="bg-foreground/5 h-4 w-30 rounded" />
       </div>
 
       {/* Optional: Spacer für späteren Content */}

@@ -12,7 +12,7 @@ export function UL({ children, article, className = "", ...props }: PropsWithChi
       className={clsx(
         "my-6 list-disc [&>li]:mt-2",
         article
-          ? ["text-foreground ml-4 max-w-none font-serif text-xl"]
+          ? ["text-foreground ml-4 max-w-prose font-serif text-xl"]
           : ["text-muted-foreground mx-auto ml-6 max-w-[700px] text-base"],
         className
       )}

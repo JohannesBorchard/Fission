@@ -11,7 +11,11 @@ export function H1({ children, article, ...props }: PropsWithChildren<H1Props>) 
       className={clsx(
         "mb-3 scroll-m-20 leading-tight tracking-tight text-balance",
         article
-          ? ["text-left text-3xl font-semibold", "sm:text-4xl sm:leading-tight", "lg:text-5xl"]
+          ? [
+              "max-w-prose text-left text-3xl font-semibold",
+              "sm:text-4xl sm:leading-tight",
+              "lg:text-5xl"
+            ]
           : ["text-center text-4xl font-bold", "sm:text-5xl sm:leading-16", "lg:text-6xl"]
       )}
       {...props}
