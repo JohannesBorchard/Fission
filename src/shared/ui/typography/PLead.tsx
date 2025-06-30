@@ -6,7 +6,12 @@ interface LeadProps {
   className?: string
 }
 
-export function PLead({ children, article, className = "" }: PropsWithChildren<LeadProps>) {
+export function PLead({
+  children,
+  article,
+  className = "",
+  ...props
+}: PropsWithChildren<LeadProps>) {
   return (
     <p
       className={clsx(
@@ -14,6 +19,7 @@ export function PLead({ children, article, className = "" }: PropsWithChildren<L
         article ? ["max-w-none text-left"] : ["mx-auto max-w-[700px] text-center"],
         className
       )}
+      {...props}
     >
       {children}
     </p>

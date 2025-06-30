@@ -6,7 +6,7 @@ interface PProps {
   className?: string
 }
 
-export function P({ children, article, className = "" }: PropsWithChildren<PProps>) {
+export function P({ children, article, className = "", ...props }: PropsWithChildren<PProps>) {
   return (
     <p
       className={clsx(
@@ -16,6 +16,7 @@ export function P({ children, article, className = "" }: PropsWithChildren<PProp
           : ["text-muted-foreground mx-auto max-w-[700px] text-center"],
         className
       )}
+      {...props}
     >
       {children}
     </p>

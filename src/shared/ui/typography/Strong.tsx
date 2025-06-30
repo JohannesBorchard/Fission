@@ -6,7 +6,12 @@ interface StrongProps {
   className?: string
 }
 
-export function Strong({ children, article, className = "" }: PropsWithChildren<StrongProps>) {
+export function Strong({
+  children,
+  article,
+  className = "",
+  ...props
+}: PropsWithChildren<StrongProps>) {
   return (
     <strong
       className={clsx(
@@ -14,6 +19,7 @@ export function Strong({ children, article, className = "" }: PropsWithChildren<
         article ? ["text-foreground"] : ["text-muted-foreground"],
         className
       )}
+      {...props}
     >
       {children}
     </strong>

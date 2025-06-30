@@ -1,51 +1,16 @@
-import { strapiApi, type BlogPost } from "@/shared/api/strapiClient"
+import { useBlogPost } from "@/features/blog/model/useBlogPost"
 import { formatDate } from "@/shared/lib/utils"
 import { Button } from "@/shared/ui/Button"
 import Section from "@/shared/ui/Section"
 import { H1 } from "@/shared/ui/typography/H1"
-import { H2 } from "@/shared/ui/typography/H2"
-import { P } from "@/shared/ui/typography/P"
+import { markdownComponents } from "@/shared/ui/typography/markdownComponents"
 import { PLead } from "@/shared/ui/typography/PLead"
-import { Strong } from "@/shared/ui/typography/Strong"
-import { UL } from "@/shared/ui/typography/UL"
-import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
 import { useParams } from "react-router"
 
 export default function BlogPostPage() {
-  const params = useParams<{ slug: string }>()
-  const slug = params.slug
-  const [post, setPost] = useState<BlogPost>()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  const components = {
-    h1: (props: any) => <H1 article {...props} />,
-    h2: (props: any) => <H2 article {...props} />,
-    p: (props: any) => <P article {...props} />,
-    strong: (props: any) => <Strong article {...props} />,
-
-    ul: (props: any) => <UL article {...props} />,
-    li: (props: any) => <li className="mt-2" {...props} />
-  }
-
-  useEffect(() => {
-    async function fetchPost() {
-      try {
-        if (!slug) throw new Error("Invalid link")
-
-        const res = await strapiApi.getBlogPost(slug)
-        if (!res) throw new Error("Post not found")
-        setPost(res)
-      } catch (error) {
-        setError(error instanceof Error ? error.message : "Failed to fetch post")
-        console.error("Failed to fetch post:", error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchPost()
-  }, [slug])
+  const { slug } = useParams<{ slug: string }>()
+  const { post, loading, error } = useBlogPost(slug)
 
   if (loading) {
     return (
@@ -84,7 +49,7 @@ export default function BlogPostPage() {
           <p>{formatDate(post.createdAt)}</p>
         </div>
         <div className="mt-6">
-          <ReactMarkdown components={components}>{post.content}</ReactMarkdown>
+          <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
         </div>
       </Section>
     )

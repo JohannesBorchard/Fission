@@ -6,7 +6,7 @@ interface ULProps {
   className?: string
 }
 
-export function UL({ children, article, className = "" }: PropsWithChildren<ULProps>) {
+export function UL({ children, article, className = "", ...props }: PropsWithChildren<ULProps>) {
   return (
     <ul
       className={clsx(
@@ -16,6 +16,7 @@ export function UL({ children, article, className = "" }: PropsWithChildren<ULPr
           : ["text-muted-foreground mx-auto ml-6 max-w-[700px]"],
         className
       )}
+      {...props}
     >
       {children}
     </ul>

@@ -1,8 +1,21 @@
+import { clsx } from "clsx"
 import type { PropsWithChildren } from "react"
 
-export function H2({ children }: PropsWithChildren<{}>) {
+interface H2Props {
+  article?: boolean
+}
+
+export function H2({ children, article, ...props }: PropsWithChildren<H2Props>) {
   return (
-    <h2 className="mb-3 scroll-m-20 text-center text-3xl leading-tight font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl">
+    <h2
+      className={clsx(
+        "mb-3 scroll-m-20 leading-tight tracking-tight text-balance",
+        article
+          ? ["text-left text-2xl font-semibold", "sm:text-3xl sm:leading-tight", "lg:text-4xl"]
+          : ["text-center text-3xl font-bold", "sm:text-4xl", "lg:text-5xl"]
+      )}
+      {...props}
+    >
       {children}
     </h2>
   )
