@@ -1,16 +1,21 @@
+import { clsx } from "clsx"
 import type { PropsWithChildren } from "react"
-export function P({
-  children,
-  className = ""
-}: PropsWithChildren<{
+
+interface PProps {
+  article?: boolean
   className?: string
-}>) {
+}
+
+export function P({ children, article, className = "" }: PropsWithChildren<PProps>) {
   return (
     <p
-      className={
-        "text-muted-foreground mx-auto max-w-[700px] text-center text-xl whitespace-pre-line " +
+      className={clsx(
+        "text-base whitespace-pre-line",
+        article
+          ? ["text-foreground mb-3 max-w-none text-left"]
+          : ["text-muted-foreground mx-auto max-w-[700px] text-center"],
         className
-      }
+      )}
     >
       {children}
     </p>

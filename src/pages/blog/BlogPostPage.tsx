@@ -5,6 +5,9 @@ import Section from "@/shared/ui/Section"
 import { H1 } from "@/shared/ui/typography/H1"
 import { H2 } from "@/shared/ui/typography/H2"
 import { P } from "@/shared/ui/typography/P"
+import { PLead } from "@/shared/ui/typography/PLead"
+import { Strong } from "@/shared/ui/typography/Strong"
+import { UL } from "@/shared/ui/typography/UL"
 import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
 import { useParams } from "react-router"
@@ -17,10 +20,13 @@ export default function BlogPostPage() {
   const [error, setError] = useState<string | null>(null)
 
   const components = {
-    h1: H1,
-    h2: H2,
-    p: P
-    // ...was noch?
+    h1: (props: any) => <H1 article {...props} />,
+    h2: (props: any) => <H2 article {...props} />,
+    p: (props: any) => <P article {...props} />,
+    strong: (props: any) => <Strong article {...props} />,
+
+    ul: (props: any) => <UL article {...props} />,
+    li: (props: any) => <li className="mt-2" {...props} />
   }
 
   useEffect(() => {
@@ -68,12 +74,18 @@ export default function BlogPostPage() {
   }
   if (post) {
     return (
-      <Section>
-        <P>{post.author_name}</P>
-        <H1>{post.title}</H1>
-        <P>{formatDate(post.createdAt)}</P>
-        <P>{post.excerpt}</P>
-        <ReactMarkdown components={components}>{post.content}</ReactMarkdown>
+      <Section className="max-w-4xl">
+        <H1 article>{post.title}</H1>
+        <PLead article className="mt-2">
+          {post.excerpt}
+        </PLead>
+        <div className="text-muted-foreground mt-4 flex max-w-none gap-2 text-left text-base">
+          <p>{post.author_name}</p>
+          <p>{formatDate(post.createdAt)}</p>
+        </div>
+        <div className="mt-6">
+          <ReactMarkdown components={components}>{post.content}</ReactMarkdown>
+        </div>
       </Section>
     )
   }
