@@ -1,7 +1,9 @@
 import { strapiApi, type BlogPost } from "@/shared/api/strapiClient"
 import { useEffect, useState } from "react"
+import { useParams } from "react-router"
 
-export function useBlogPost(slug: string | undefined) {
+export function useBlogPost() {
+  const { slug } = useParams<{ slug: string }>()
   const [post, setPost] = useState<BlogPost>()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

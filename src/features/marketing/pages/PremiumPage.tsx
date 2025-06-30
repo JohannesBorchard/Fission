@@ -1,5 +1,6 @@
 import { Badge } from "@/shared/ui/Badge"
 import Section from "@/shared/ui/Section"
+import { H2 } from "@/shared/ui/typography/H2"
 import { Check, Euro, Users } from "lucide-react"
 import { Link } from "react-router"
 
@@ -11,7 +12,7 @@ export default function PremiumPage() {
       <Badge variant="outline" size="lg" className="mx-auto mb-5 block">
         Todo
       </Badge>
-      <h2 className="mb-6 text-center text-4xl font-bold tracking-tight sm:text-5xl">Go Premium</h2>
+      <H2 className="mb-6">Go Premium</H2>
       <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-lg">
         Simple pricing. No hidden fees. Cancel anytime.
       </p>
