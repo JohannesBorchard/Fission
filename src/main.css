@@ -137,3 +137,11 @@ html {
 ::selection {
   background-color: color-mix(in oklch, var(--color-primary) 20%, transparent);
 }
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: color-mix(in oklch, var(--muted-foreground) 70%, transparent); /* oder z.B. #aaa */
+  pointer-events: none;
+  height: 0;
+}

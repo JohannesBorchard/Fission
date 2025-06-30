@@ -4,7 +4,7 @@ import { LoginPage } from "@/features/auth/pages/LoginPage"
 import { RegistrationPage } from "@/features/auth/pages/RegistrationPage"
 import BlogPostPage from "@/features/blog/pages/DetailPage"
 import FeedPage from "@/features/blog/pages/FeedPage"
-import SecretPage from "@/features/blog/pages/SecretPage"
+import EditorPage from "@/features/dashboard/pages/EditorPage"
 import IndexPage from "@/features/marketing/pages/IndexPage"
 import PremiumPage from "@/features/marketing/pages/PremiumPage"
 import NotFoundPage from "@/shared/pages/NotFoundPage"
@@ -28,7 +28,7 @@ export default function AppRoutes() {
 
         {/* Private Only */}
         <Route path="dashboard" element={<ProtectedRoute />}>
-          <Route path="create" element={<SecretPage />} />
+          <Route path="create" element={<EditorPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
