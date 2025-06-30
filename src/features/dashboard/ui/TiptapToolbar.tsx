@@ -6,7 +6,7 @@ export function TiptapToolbar({ editor }: { editor: any }) {
   if (!editor) return null
 
   return (
-    <div className="border-border bg-muted mb-2 flex flex-wrap items-center gap-2 rounded-t-md border px-3 py-2">
+    <div className="border-border bg-muted mb-2 flex flex-wrap items-center gap-3 rounded-t-md border px-4 py-3">
       <BlockTypeSelector editor={editor} />
 
       <Button
