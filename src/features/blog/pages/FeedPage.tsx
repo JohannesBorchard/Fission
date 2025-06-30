@@ -1,0 +1,164 @@
+import { strapiApi, type BlogPost } from "@/shared/api/strapiClient"
+import { formatDate } from "@/shared/lib/utils"
+import { Button } from "@/shared/ui/Button"
+import Section from "@/shared/ui/Section"
+import { Bookmark, CalendarDays, Eye, MessageCircle, MoreHorizontal } from "lucide-react"
+import { useEffect, useState, type PropsWithChildren } from "react"
+import { Link } from "react-router"
+
+export default function FeedPage() {
+  const [posts, setPosts] = useState<BlogPost[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        setLoading(true)
+        const data = await strapiApi.getBlogPosts()
+        setPosts(data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch posts")
+        console.error("Failed to fetch posts:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPosts()
+  }, [])
+
+  const getExcerpt = (content: string, maxLength: number = 120) => {
+    const plainText = content.replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold markdown
+    return plainText.length > maxLength ? plainText.substring(0, maxLength) + "..." : plainText
+  }
+
+  if (loading) {
+    return (
+      <FeedLayout>
+        <PostSkeleton />
+        <PostSkeleton />
+        <PostSkeleton />
+      </FeedLayout>
+    )
+  }
+
+  if (error) {
+    return (
+      <Section>
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center text-red-500">
+            Error: {error}
+            <br />
+            <Button onClick={() => window.location.reload()} className="mt-4">
+              Retry
+            </Button>
+          </div>
+        </div>
+      </Section>
+    )
+  }
+
+  return (
+    <FeedLayout>
+      {posts.length === 0 ? (
+        <div className="py-12 text-center">
+          <h3 className="mb-2 text-xl font-semibold">No posts yet</h3>
+          <p className="text-muted-foreground mb-4">Be the first to create a blog post!</p>
+          <Button asChild>
+            <Link to="/dashboard/create">Create First Post</Link>
+          </Button>
+        </div>
+      ) : (
+        posts.map((post) => (
+          <div key={post.id} className="pb-8 not-last:border-b last:pb-0">
+            <Link to={`/feed/${post.slug}`}>
+              <div className="text-muted-foreground mb-1 text-sm font-medium underline-offset-4 hover:underline">
+                {post.author_name}
+              </div>
+            </Link>
+            <Link to={`/feed/${post.slug}`}>
+              <h3 className="text-foreground mb-2 cursor-pointer text-xl leading-tight font-semibold tracking-tight underline-offset-4 hover:underline">
+                {post.title}
+              </h3>
+            </Link>
+            <p className="text-muted-foreground mb-3 text-sm">
+              {post.excerpt || getExcerpt(post.content)}
+            </p>
+            <div className="text-muted-foreground flex items-center justify-between text-xs">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  <CalendarDays className="size-4" />
+                  {formatDate(post.createdAt)}
+                </div>
+                <div className="flex items-center gap-1">
+                  <Eye className="size-4" />
+                  {"0"}
+                </div>
+                <div className="flex items-center gap-1">
+                  <MessageCircle className="size-4" />
+                  {"0"}
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <Bookmark className="hover:text-foreground size-4 cursor-pointer" />
+                <MoreHorizontal className="hover:text-foreground size-4 cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+    </FeedLayout>
+  )
+}
+
+function PostSkeleton() {
+  return (
+    <div className="animate-pulse pb-8 not-last:border-b last:pb-0">
+      {/* Author */}
+      <div className="bg-foreground/5 mb-2 h-4 w-24 rounded" />
+
+      {/* Title */}
+      <div className="bg-foreground/5 mb-3 h-6 w-3/5 rounded" />
+
+      {/* Excerpt (1 Zeile) */}
+      <div className="bg-foreground/5 mb-3 h-4 w-3/4 rounded" />
+
+      {/* Footer */}
+      <div className="text-muted-foreground flex items-center justify-between text-xs">
+        {/* Left side: Date, Views, Comments */}
+        <div className="flex items-center gap-2">
+          <div className="bg-foreground/5 h-4 w-20 rounded" />
+          <div className="bg-foreground/5 h-4 w-6 rounded" />
+          <div className="bg-foreground/5 h-4 w-6 rounded" />
+        </div>
+
+        {/* Right side: Bookmark, More */}
+        <div className="flex items-center gap-2">
+          <div className="bg-foreground/5 h-4 w-6 rounded" />
+          <div className="bg-foreground/5 h-4 w-6 rounded" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function FeedLayout({ children }: PropsWithChildren) {
+  return (
+    <Section>
+      <h2 className="mb-10 text-center text-4xl font-bold tracking-tight sm:text-5xl">
+        Community Feed
+      </h2>
+      <div className="mx-auto flex max-w-4xl flex-col space-y-10">
+        <div className="mx-auto flex gap-3">
+          <Button asChild size="lg" className="">
+            <Link to="/dashboard/create">Create Blog Post</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link to="/faq">Learn More</Link>
+          </Button>
+        </div>
+        {children}
+      </div>
+    </Section>
+  )
+}
