@@ -33,10 +33,11 @@ export function TiptapEditor() {
           "mx-auto",
           "text-left",
           "[&>p]:mb-2 [&>p]:text-xl [&>p]:leading-[1.5] [&>p]:max-w-prose",
+          "caret-primary",
 
           // Headings mit font-sans
-          "[&>h1]:mb-3 [&>h1]:not-first:mt-8 [&>h1]:text-3xl [&>h1]:font-sans [&>h1]:font-semibold [&>h1]:leading-tight [&>h1]:max-w-[650px]",
-          "[&>h2]:mb-3 [&>h2]:not-first:mt-5 [&>h2]:text-2xl [&>h2]:font-sans [&>h2]:font-semibold [&>h2]:leading-snug [&>h2]:max-w-[650px]",
+          "[&>h1]:mb-3 [&>h1]:not-first:mt-8 [&>h1]:text-3xl [&>h1]:font-sans [&>h1]:font-bold [&>h1]:leading-tight [&>h1]:max-w-[650px]",
+          "[&>h2]:mb-3 [&>h2]:not-first:mt-4 [&>h2]:text-2xl [&>h2]:font-sans [&>h2]:font-semibold [&>h2]:leading-snug [&>h2]:max-w-[650px]",
           "[&>h3]:mb-3 [&>h3]:not-first:mt-8 [&>h3]:text-xl [&>h3]:font-sans [&>h3]:font-semibold [&>h3]:leading-snug [&>h2]:max-w-[650px]",
 
           "[&>ul]:my-4 [&>ul]:ml-4 [&>ul]:list-disc [&>ul>li]:mt-2 [&>ul]:text-xl [&>ul]:max-w-[650px]",
