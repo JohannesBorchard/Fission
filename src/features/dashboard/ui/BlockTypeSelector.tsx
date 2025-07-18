@@ -19,8 +19,10 @@ const blockTypes = [
           const isEmpty = state.selection.$from.parent.content.size === 0
           if (isEmpty) {
             tr.setBlockType(state.selection.from, state.selection.to, state.schema.nodes.paragraph)
+
             return true
           }
+
           return editor.commands.setParagraph()
         })
         .run()
@@ -41,8 +43,10 @@ const blockTypes = [
             tr.setBlockType(state.selection.from, state.selection.to, state.schema.nodes.heading, {
               level: 1
             })
+
             return true
           }
+
           return editor.commands.toggleHeading({ level: 1 })
         })
         .run()
@@ -88,7 +92,7 @@ export function BlockTypeSelector({ editor }: { editor: any }) {
       }}
     >
       <Popover.Trigger asChild>
-        <Button variant="ghost" size="sm" className="justify-start text-sm!">
+        <Button className="justify-start text-sm!" size="sm" variant="ghost">
           {active.label}
           {open ? (
             <ChevronUp className="text-muted-foreground mt-0.5 size-4" />
@@ -99,22 +103,22 @@ export function BlockTypeSelector({ editor }: { editor: any }) {
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          sideOffset={8}
           className="bg-popover text-popover-foreground z-50 w-48 rounded-md border p-1 shadow-md"
+          sideOffset={8}
         >
           {blockTypes.map(({ label, icon: Icon, isActive, command }) => (
             <button
               key={label}
+              className={cn(
+                "hover:bg-accent hover:text-accent-foreground flex w-full items-center rounded-sm px-2 py-1.5 text-sm",
+                isActive(editor) && "bg-accent text-accent-foreground"
+              )}
               onClick={() => {
                 command(editor)
                 setOpen(false)
                 // Zusätzlicher Fokus-Call hier ist nicht mehr nötig,
                 // da er durch onOpenChange abgedeckt wird
               }}
-              className={cn(
-                "hover:bg-accent hover:text-accent-foreground flex w-full items-center rounded-sm px-2 py-1.5 text-sm",
-                isActive(editor) && "bg-accent text-accent-foreground"
-              )}
             >
               <Icon className="mr-2 h-4 w-4" />
               {label}

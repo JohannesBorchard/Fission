@@ -22,7 +22,7 @@ export default function PublicRoute() {
     const rawFrom = (state as any)?.from
     const target = typeof rawFrom === "string" ? rawFrom : rawFrom?.pathname || "/"
 
-    return <Navigate to={target} replace />
+    return <Navigate replace to={target} />
   }
 
   return <Outlet />

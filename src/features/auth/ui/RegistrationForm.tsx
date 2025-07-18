@@ -27,6 +27,7 @@ export function RegistrationForm() {
     if (!result.success) {
       const firstError = result.error.errors[0]
       toast.error(firstError.message)
+
       return
     }
 
@@ -46,12 +47,12 @@ export function RegistrationForm() {
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
                   required
                   disabled={loading}
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  type="email"
                   value={formData.email}
                   onChange={(e) => {
                     setFormData((prev) => ({ ...prev, email: e.target.value }))
@@ -59,30 +60,30 @@ export function RegistrationForm() {
                 />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="password" className="h-5">
+                <Label className="h-5" htmlFor="password">
                   Password
                 </Label>
                 <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Create a strong password (min. 8 characters)"
                   required
                   disabled={loading}
+                  id="password"
                   minLength={8}
+                  name="password"
+                  placeholder="Create a strong password (min. 8 characters)"
+                  type="password"
                   value={formData.password}
                   onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full" disabled={loading}>
+                <Button className="w-full" disabled={loading} type="submit">
                   {loading ? "Creating Account..." : "Create Free Account"}
                 </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
-              <Link to="/login" className="underline underline-offset-4">
+              <Link className="underline underline-offset-4" to="/login">
                 Login
               </Link>
             </div>

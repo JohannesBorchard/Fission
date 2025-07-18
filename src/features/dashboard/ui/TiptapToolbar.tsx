@@ -10,54 +10,54 @@ export function TiptapToolbar({ editor }: { editor: any }) {
       <BlockTypeSelector editor={editor} />
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("bulletList") ? "default" : "ghost"}
-        className="size-7"
         onClick={() => editor.chain().focus().toggleBulletList().run()}
       >
         <List className="h-4 w-4" />
       </Button>
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("bold") ? "default" : "ghost"}
-        className="size-7"
         onClick={() => editor.chain().focus().toggleBold().run()}
       >
         <Bold className="h-4 w-4" />
       </Button>
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("italic") ? "default" : "ghost"}
-        className="size-7"
         onClick={() => editor.chain().focus().toggleItalic().run()}
       >
         <Italic className="h-4 w-4" />
       </Button>
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("code") ? "secondary" : "ghost"}
-        className="size-7"
         onClick={() => editor.chain().focus().toggleCode().run()}
       >
         <Code2 className="h-4 w-4" />
       </Button>
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("codeBlock") ? "secondary" : "ghost"}
-        className="size-7"
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
       >
         <Code className="h-4 w-4" />
       </Button>
 
       <Button
+        className="size-7"
         size="icon"
         variant={editor.isActive("link") ? "secondary" : "ghost"}
-        className="size-7"
         onClick={() => {
           const url = prompt("Enter URL")
           if (url) editor.chain().focus().setLink({ href: url }).run()

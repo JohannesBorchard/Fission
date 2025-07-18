@@ -115,7 +115,7 @@ const features: Feature[] = [
 
 function FeaturesSection() {
   return (
-    <Section id="feature-section" className="space-y-8">
+    <Section className="space-y-8" id="feature-section">
       <H2>Features</H2>
       <P>
         This project is an experiment to see how modern and scalable web development works with an
@@ -126,9 +126,9 @@ function FeaturesSection() {
           <FeatureCard
             key={f.title}
             Icon={f.Icon}
-            title={f.title}
             description={f.description}
             done={f.done}
+            title={f.title}
           />
         ))}
       </div>

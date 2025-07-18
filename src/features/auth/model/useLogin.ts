@@ -24,6 +24,7 @@ export function useLogin() {
     } catch (err) {
       const message = err instanceof Error ? err.message : "An unexpected error has occurred"
       toast.error(message)
+
       return false
     } finally {
       setLoading(false)

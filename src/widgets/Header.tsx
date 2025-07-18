@@ -32,6 +32,7 @@ export default function Header() {
     await supabase.auth.signOut()
     toast.success("Logout successful")
   }
+
   return (
     <header className="flex items-center justify-between px-4 pt-4 sm:px-5 sm:pt-5">
       {/* Desktop-Navigation */}
@@ -69,8 +70,8 @@ export default function Header() {
 function Logo() {
   return (
     <Link
-      to="/"
       className="text-primary hover:text-primary-foreground/80 dark:hover:text-primary/80 focus-visible:ring-ring/50 mr-5 inline-flex items-center rounded-md px-2 text-2xl transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+      to="/"
     >
       <Zap className="mb-1 size-6" />
       <span className="mb-1.5 ml-2 font-semibold">Fission</span>
@@ -119,7 +120,7 @@ function NavLinkItem({
       asChild
       className={cn(navigationMenuTriggerStyle(), isActive && "text-accent-foreground")}
     >
-      <Link to={url} className="flex flex-row">
+      <Link className="flex flex-row" to={url}>
         {title}
         {/* !done && <Badge variant="outline">Todo</Badge> */}
       </Link>
@@ -150,19 +151,19 @@ function DesktopNav() {
 function MobileBurger() {
   return (
     <SheetTrigger asChild>
-      <Button variant="ghost" size="icon">
+      <Button size="icon" variant="ghost">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            d="M4 6h16M4 12h16M4 18h16"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>
       </Button>
@@ -172,7 +173,7 @@ function MobileBurger() {
 
 function MobileNavSheet() {
   return (
-    <SheetContent side="right" className="flex w-64 flex-col p-6">
+    <SheetContent className="flex w-64 flex-col p-6" side="right">
       <SheetHeader className="flex items-center justify-between">
         <SheetTitle className="text-foreground/80 absolute top-2.5 left-5">Pages</SheetTitle>
       </SheetHeader>
@@ -185,7 +186,7 @@ function MobileNavSheet() {
         <NavigationMenu className="max-w-none">
           <NavigationMenuList className="flex flex-col space-y-2">
             {menuItems.map((i) => (
-              <NavLinkItem {...i} closeSheet key={i.url} />
+              <NavLinkItem {...i} key={i.url} closeSheet />
             ))}
           </NavigationMenuList>
         </NavigationMenu>
@@ -196,7 +197,7 @@ function MobileNavSheet() {
         <ModeToggle className="w-full" />
         <SheetClose asChild>
           <Link to="/login">
-            <Button variant="secondary" className="w-full">
+            <Button className="w-full" variant="secondary">
               Login
             </Button>
           </Link>

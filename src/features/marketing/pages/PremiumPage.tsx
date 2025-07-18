@@ -9,7 +9,7 @@ import { Link } from "react-router"
 export default function PremiumPage() {
   return (
     <Section id="pricing">
-      <Badge variant="outline" size="lg" className="mx-auto mb-5 block">
+      <Badge className="mx-auto mb-5 block" size="lg" variant="outline">
         Todo
       </Badge>
       <H2 className="mb-6">Go Premium</H2>
@@ -37,8 +37,8 @@ export default function PremiumPage() {
             </li>
           </ul>
           <Link
-            to="/registration"
             className="bg-secondary text-secondary-foreground hover:bg-secondary/90 mt-auto rounded-md px-4 py-2 text-center font-semibold transition-colors"
+            to="/registration"
           >
             Get Started
           </Link>
@@ -68,8 +68,8 @@ export default function PremiumPage() {
             </li>
           </ul>
           <Link
-            to="/checkout"
             className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-center font-semibold transition-colors"
+            to="/checkout"
           >
             Upgrade to Pro
           </Link>

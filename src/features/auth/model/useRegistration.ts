@@ -15,10 +15,12 @@ export function useRegistration() {
       toast.success("Registration successful!", {
         description: "Please open the confirmation email to log-in."
       })
+
       return true
     } catch (err) {
       const message = err instanceof Error ? err.message : "An unexpected error has occurred"
       toast.error(message)
+
       return false
     } finally {
       setLoading(false)

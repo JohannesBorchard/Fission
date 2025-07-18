@@ -27,6 +27,7 @@ export function LoginForm() {
     if (!result.success) {
       const firstError = result.error.errors[0]
       toast.error(firstError.message)
+
       return
     }
 
@@ -46,12 +47,12 @@ export function LoginForm() {
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
                   required
                   disabled={loading}
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  type="email"
                   value={formData.email}
                   onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                 />
@@ -60,28 +61,28 @@ export function LoginForm() {
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                   <Link
-                    to="forgot-password"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    to="forgot-password"
                   >
                     Forgot your password?
                   </Link>
                 </div>
                 <Input
-                  id="password"
-                  name="password"
-                  type="password"
                   required
                   disabled={loading}
+                  id="password"
                   minLength={8}
+                  name="password"
+                  type="password"
                   value={formData.password}
                   onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
                 />
               </div>
               <div className="flex flex-col gap-3">
                 <Button
-                  type="submit"
                   className="bg-foreground text-background w-full"
                   disabled={loading}
+                  type="submit"
                 >
                   {loading ? "Logging in..." : "Login"}
                 </Button>
@@ -89,7 +90,7 @@ export function LoginForm() {
             </div>
             <div className="mt-4 text-center text-sm">
               Don't have an account yet?{" "}
-              <Link to="/registration" className="underline underline-offset-4">
+              <Link className="underline underline-offset-4" to="/registration">
                 Register
               </Link>
             </div>

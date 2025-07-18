@@ -16,22 +16,22 @@ export default function AppRoutes() {
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route index element={<IndexPage />} />
-        <Route path="feed" element={<FeedPage />} />
-        <Route path="feed/:slug" element={<BlogPostPage />} />
-        <Route path="premium" element={<PremiumPage />} />
+        <Route element={<FeedPage />} path="feed" />
+        <Route element={<BlogPostPage />} path="feed/:slug" />
+        <Route element={<PremiumPage />} path="premium" />
 
         {/* Public Only */}
         <Route element={<PublicRoute />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="registration" element={<RegistrationPage />} />
+          <Route element={<LoginPage />} path="login" />
+          <Route element={<RegistrationPage />} path="registration" />
         </Route>
 
         {/* Private Only */}
-        <Route path="dashboard" element={<ProtectedRoute />}>
-          <Route path="create" element={<EditorPage />} />
+        <Route element={<ProtectedRoute />} path="dashboard">
+          <Route element={<EditorPage />} path="create" />
         </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<NotFoundPage />} path="*" />
       </Route>
     </Routes>
   )

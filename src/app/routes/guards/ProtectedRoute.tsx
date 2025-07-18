@@ -12,7 +12,8 @@ export default function ProtectedRoute() {
     toast.warning("Please log in to continue.", {
       id: "protected-guard-warning"
     })
-    return <Navigate to="/login" state={{ from: location }} replace />
+
+    return <Navigate replace state={{ from: location }} to="/login" />
   }
 
   return <Outlet />

@@ -33,6 +33,7 @@ export const strapiApi = {
     const response = await fetch(`${STRAPI_URL}/api/blog-posts?sort=createdAt:desc`)
     if (!response.ok) throw new Error("Failed to fetch posts")
     const data: StrapiResponse<BlogPost[]> = await response.json()
+
     return data.data
   },
 
@@ -40,6 +41,7 @@ export const strapiApi = {
     const response = await fetch(`${STRAPI_URL}/api/blog-posts?filters[slug][$eq]=${slug}`)
     if (!response.ok) throw new Error("Failed to fetch post")
     const data: StrapiResponse<BlogPost[]> = await response.json()
+
     return data.data[0] || null
   }
 }
