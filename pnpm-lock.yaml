@@ -39,28 +39,28 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.31.0(jiti@2.4.2))
       '@supabase/supabase-js':
-        specifier: ^2.50.0
+        specifier: ^2.52.0
         version: 2.52.0
       '@tailwindcss/vite':
-        specifier: ^4.1.10
+        specifier: ^4.1.11
         version: 4.1.11(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1))
       '@tiptap/extension-code':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))
       '@tiptap/extension-link':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)
       '@tiptap/extension-placeholder':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)
       '@tiptap/pm':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1
       '@tiptap/react':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tiptap/starter-kit':
-        specifier: ^2.23.0
+        specifier: ^2.26.1
         version: 2.26.1
       class-variance-authority:
         specifier: ^0.7.1
@@ -78,7 +78,7 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.12
+        specifier: ^0.6.14
         version: 0.6.14(prettier@3.6.2)
       react:
         specifier: ^19.1.0
@@ -90,62 +90,62 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.1.8)(react@19.1.0)
       react-router:
-        specifier: ^7.6.2
+        specifier: ^7.7.0
         version: 7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       sonner:
-        specifier: ^2.0.5
+        specifier: ^2.0.6
         version: 2.0.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
       tailwindcss:
-        specifier: ^4.1.10
+        specifier: ^4.1.11
         version: 4.1.11
       turndown:
         specifier: ^7.2.0
         version: 7.2.0
       zod:
-        specifier: ^3.25.67
+        specifier: ^3.25.76
         version: 3.25.76
     devDependencies:
       '@eslint/js':
-        specifier: ^9.25.0
+        specifier: ^9.31.0
         version: 9.31.0
       '@types/node':
-        specifier: ^24.0.1
+        specifier: ^24.0.14
         version: 24.0.14
       '@types/react':
-        specifier: ^19.1.2
+        specifier: ^19.1.8
         version: 19.1.8
       '@types/react-dom':
-        specifier: ^19.1.2
+        specifier: ^19.1.6
         version: 19.1.6(@types/react@19.1.8)
       '@vitejs/plugin-react':
-        specifier: ^4.4.1
+        specifier: ^4.7.0
         version: 4.7.0(vite@6.3.5(@types/node@24.0.14)(jiti@2.4.2)(lightningcss@1.30.1))
       eslint:
-        specifier: ^9.25.0
+        specifier: ^9.31.0
         version: 9.31.0(jiti@2.4.2)
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-react-refresh:
-        specifier: ^0.4.19
+        specifier: ^0.4.20
         version: 0.4.20(eslint@9.31.0(jiti@2.4.2))
       globals:
-        specifier: ^16.0.0
+        specifier: ^16.3.0
         version: 16.3.0
       prettier:
-        specifier: ^3.5.3
+        specifier: ^3.6.2
         version: 3.6.2
       tw-animate-css:
-        specifier: ^1.3.4
+        specifier: ^1.3.5
         version: 1.3.5
       typescript:
         specifier: ~5.8.3
         version: 5.8.3
       typescript-eslint:
-        specifier: ^8.30.1
+        specifier: ^8.37.0
         version: 8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.3)
       vite:
         specifier: ^6.3.5
